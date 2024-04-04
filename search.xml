@@ -42,6 +42,262 @@
     
     
     <entry>
+      <title>AlphaZero算法</title>
+      <link href="/2022/08/09/AlphaZero/"/>
+      <url>/2022/08/09/AlphaZero/</url>
+      
+        <content type="html"><![CDATA[<p>蒙特卡洛树搜索：</p><p>UCB(Upper Confidence Bound/上限置信区间)：探索-利用(Exploration-Exploitation)，基于过去产生的平均回报和对未来期望回报的累加，UCB1值最高的被认为是最有潜力的节点，即那些过去产生过很大价值，或是那些过去没有探索过但可能会产生更大价值的节点。</p><p>n代表number of visits，指访问次数</p><p>左半式为了找到最大的价值，右半式为了广泛探索可能</p><p>Value和迭代次数n均累加</p><p>根节点是当前状态<br>选取根节点的直接子节点中最大的一个行为<br>蒙特卡洛算法</p><p>Minimax算法：</p><p>Alpha-Beta剪枝算法：</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 强化学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AlphaZero </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>anaconda虚拟环境</title>
+      <link href="/2022/08/09/Anaconda/"/>
+      <url>/2022/08/09/Anaconda/</url>
+      
+        <content type="html"><![CDATA[<p>安装torch的方法：有驱动的前提下，取pytorch官网寻找命令安装torch+cuda<br>查询虚拟环境：conda env list<br>创建虚拟环境：conda create -n name python=3.xx<br>删除虚拟环境：conda remove -n name all<br>进入虚拟环境：conda activate name<br>退出虚拟环境：conda deactivate</p><p>能正常运行我电脑里的一个torch代码需要以下包：<br>pip3 install torch torchvision torchaudio —index-url <a href="https://download.pytorch.org/whl/cu121">https://download.pytorch.org/whl/cu121</a><br>Conda install nb_conda<br>Pip install jupyter matplotlib d2l tensorboard</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+          <category> 编译进化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Anaconda </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C学习</title>
+      <link href="/2022/08/09/C/"/>
+      <url>/2022/08/09/C/</url>
+      
+        <content type="html"><![CDATA[<p>文件架构：每个.c文件只包含对应的.h文件，每个.h文件只包含要用到的.h文件</p><h1 id="ifndef只能解决重复包含的问题，比如a-h包含了c-h，b-h也包含了c-h，此时如果在d-h里同时包含a-h和b-h，那么如果没有ifndef就会报错。"><a href="#ifndef只能解决重复包含的问题，比如a-h包含了c-h，b-h也包含了c-h，此时如果在d-h里同时包含a-h和b-h，那么如果没有ifndef就会报错。" class="headerlink" title="ifndef只能解决重复包含的问题，比如a.h包含了c.h，b.h也包含了c.h，此时如果在d.h里同时包含a.h和b.h，那么如果没有ifndef就会报错。"></a>ifndef只能解决重复包含的问题，比如a.h包含了c.h，b.h也包含了c.h，此时如果在d.h里同时包含a.h和b.h，那么如果没有ifndef就会报错。</h1><p>如果a.h里包含了b.h，b.h里又包含了a.h，那么这样也会报错，且这个问题无法使用ifndef解决，且有时不会显式报错，发现的时候已经为时已晚，可谓代码杀手。<br>建议在规划文件时先把文件的架构以图的形式捋顺再动手。</p><p>extern置于变量前,标示变量的定义在别的文件中,提示编译器遇到此变量和函数时在其他模块中寻找其定义。</p><p>函数指针<br>函数指针 —存放函数地址的指针；<br>&amp;函数名 —得到的就是一个函数的地址；<br>正如数组名=&amp;数组名，函数名也是等于&amp;函数名的<br>函数指针定义：函数的返回值类型（<em>指针名）（函数的参数列表类型）=&amp;函数名/=函数名<br>函数指针调用：(</em>函数指针)(函数的参数列表类型)=函数指针(函数的参数列表类型)=函数名(函数的参数列表类型)<br>例：<br>void Add(int x, int y){return x+y;}<br>int main(){<br>int (<em>pf)(int,int)=&amp;Add=Add;<br>int ret=(</em>pf)(3,5)=pf(3,5)=Add(3,5)=8;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程语言学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>FOC电机控制算法</title>
+      <link href="/2022/08/09/FOC/"/>
+      <url>/2022/08/09/FOC/</url>
+      
+        <content type="html"><![CDATA[<p>直流无刷电机的工作原理：<br>由于没有一般直流电机的换向刷，故控制直流无刷电机实质上就是对其硬件mos管开关规律的控制。假设Q0、Q1代表A相，Q2、Q3代表B相，Q4、Q5代表C相。以打开Q1，Q2为例，此时A线圈上S下N，B线圈左S右N，所以转子磁铁会转到图中的状态。以此类推，我们依序将AB-&gt;AC-&gt;BC-&gt;BA-&gt;CA-&gt;CB-&gt;AB……通电，则转子便可以以一定的速度循环转动起来。而要让mos管按照我们的要求开闭，就需要编写单片机程序来实现高速规律控制。这种程序就是FOC算法，FOC算法就是对电机的运动建立数学模型，把电机的运动抽象化，使单片机能够根据这个算法控制电机产生我们想要的力矩和速度。</p><p>我们知道，直流无刷电机由三相线接入三股相位相差120°的电流分别作用于ABC三相，用相量法将其写作向量形式即如下图所示，同时我们将三相电流利用矢量分解合成到α-β坐标系下：</p><p>写作矩阵形式即：</p><p>这个变换就是所谓的克拉克变换，利用克拉克变换，我们就可以把三相电流降维成两个向量<br>Iα和Iβ，由基尔霍夫电流定律和电机的对称性，如果我们假设电流从A相流入，我们可以得到两个方程：ia+ib+ic=0,ib=ic。故有ib=ic=-0.5ia，代入克拉克变换的第一个方程就有Iα=1.5ia。在实际应用时，为了简化运算，我们希望Iα能完全等于ia，故因此我们对克拉克变换额外乘以一个系数2/3，这样子Iα就等于ia了。反映在坐标变换下，就是除了进行矢量的分解合成外，还对合成到α-β坐标系下的矢量作了比例变换。此时的克拉克变换称为等幅值形式的克拉克变换。其格式如下图所示，即比普通的克拉克变换多了一个系数2/3。</p><p>借助基尔霍夫电流定律我们还可以知道，我们并非要得到ia，ib，ic三相电流而只需要知晓其中两相即可，已知在等幅值形式的克拉克变换下有Iα=ia。进一步我们可以求由两相电流表示的Iβ：</p><p>于是简化的等幅值形式克拉克变换即：</p><p>反过来，如果我们已知了ia，ib，ic三相电流，则我们也可以得到Iα和Iβ，这个过程被称为等幅值形式的克拉克逆变换：</p><p>写作矩阵形式即：</p><p>利用克拉克变换，我们成功实现了把三相电流降维成两个向量Iα和Iβ，但通过Iα和Iβ还不足以直观的反映电机旋转的物理状态，为此，我们进一步引入帕克变换。<br>容易得到，克拉克变换所建立的α-β坐标系是固定在定子上的，为了反映电机旋转的物理状态，我们于是在转子上也建立一个被称为Q-D（交轴-直轴）的坐标系，这个坐标系随转子旋转，定义D轴方向为沿转子N极中心线的方向。此时Q-D坐标系与α-β坐标系的角度差即为电机转动的电角度，它反映了电机的转动；而IQ和ID（交轴电流，直轴电流）即为两个定值（且通常ID=0），它们反映了电机给定的力矩。</p><p>借助坐标转换我们容易得到IQ、ID和Iα、Iβ的关系如下，这个关系就是帕克变换：</p><p>同理它的逆变换式就是：</p><p>帕克变换的精髓在于，他通过坐标转换得到了大小与方向分离的两组量，作为定值的IQ和ID仅反映了电机的力矩，而电机的旋转过程则完全由变量电角度θ体现，于是乎，我们想要控制电机的力矩，只需要为IQ和ID赋值即可，而电机旋转带来的矢量变化则通过电角度θ，借助帕克逆变换和克拉克逆变换自然地反映到了三相电流ia，ib，ic中，进而控制电机的运动，整个过程省去了复杂的矢量旋转与计算。<br>综上，整个FOC算法的过程就是：</p><p>而三相电流ia，ib，ic驱动电机转过一个角度后，在下一瞬间角度传感器便会更新θ的值，从而在新的时刻重复这一循环。<br>同理，我们也可以得到电压形式的帕克逆变换和克拉克逆变换，两者实质上没有区别：</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 控制理论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> FOC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PT与PVT路径规划</title>
+      <link href="/2022/08/09/PVT/"/>
+      <url>/2022/08/09/PVT/</url>
+      
+        <content type="html"><![CDATA[<p>本文介绍位置-时间（PT）和位置-速度-时间（PVT）路径插值算法。下面包含了两种算法的优缺点。<br>PT和PVT算法将一系列的点-时间对写入到控制卡中，在每个采样创建一个实时的位置。PVT插值类型还需要附加每个点上的速度。一个点可以有多个维度。<br>在PT模式下：<br>PT算法计算出一个合适的速度曲线。PT算法保证控制卡的轨迹计算符合每一个已知的点和时间，达到这一条件所需的分段速度只需由该分段的位置和时间的差分就可以计算出来。</p><p>什么时候适用PT算法？<br>PT算法非常适用于密集点或低速。这是一个非常简单的算法，只需要很少的计算，运算速度很快。由上图可以看到，这里的速度跃变都是理想情况的突变，没有加速度的加入，因而如果点之间的距离太远，运动将很粗糙，存在较大的误差。最好将点间距保持在几个样本内。默认采样率为500微秒。<br>在PVT模式下：<br>在保证PT的同时，这个算法还保证在对应的时间，对应的位置达到对应的速度。这个计算源自标准运动学方程，具体原理不详述。</p><p>简单的PVT示例例如，可以使用三个位置、速度和时间点的列表生成梯形速度轮廓运动：</p><p>值得注意的是，PVT算法不关心非特征点的位置、速度和时间情况，而只保证特征点满足需要，因而点之间的轮廓（v-t图像）可能不是期望的，这与PVT路径的计算有关。<br>例如，考虑上面PVT轮廓（梯形）图中的简单三点梯形轮廓。如果点0和1处的速度太小，轮廓将拉伸以覆盖适当的距离；如果点0和1处的速度太大，轮廓将缩小以覆盖适当的距离。</p><p>什么时候适用PVT算法？<br>PVT算法非常适合于平滑和闭合路径控制。这些点可以间隔得非常近或非常远。对于复杂路径部分，点应紧密间隔。对于简单路径部分，点可以间隔很远。PVT几乎可以处理任何点列表，最困难的部分是确定每个点的适当速度。<br>测试用例：<br>使用三种类型的点时间序列（步进、锯齿形和八角形）来评估PT/PVT算法创建的路径。大多数高阶（多项式）插值算法比具有直线和锐角的截面更适合于描述路径的连续曲线截面。<br>当路径不太适合高阶多项式时，步长和Z字形路径测试确定算法的性能。八边形路径测试算法在给定圆周围少量（8）点的情况下对路径的圆形截面进行插值的效果。<br>先看步进模式：（左边为PT，右边为PVT，从上到下分别为位置，速度，加速度表示）</p><p>可以看到PT的路径是连续的，但速度、加速度都是瞬间的，因而要求两点在时间上非常接近或速度非常低。而PVT位置和速度是连续的，加速度不是。<br>再看锯齿形：</p><p>可以看到PT运动非常适合于由直线和锐角组成的路径。PVT路径往往比PT路径平滑得多，但需要在每个提供的点处提供每个轴的速度。这会增加应用程序的复杂性，因为每个点的速度通常难以确定。<br>最后是八角形：</p><p>同样，PT路径由简单的直线组成。径向误差是从插值路径到中心的距离与通过点的圆半径之间的差，最大误差在点之间的中间。而PVT路径则接近于一个圆了，这在PT中可能需要更大量的点才能近似。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 控制理论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 轨迹规划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git联合创作</title>
+      <link href="/2022/08/09/git/"/>
+      <url>/2022/08/09/git/</url>
+      
+        <content type="html"><![CDATA[<p>Vscode中下载适用于windows的git，同时加入Gitlens工具包<br>安装时注意在这个界面选择使用visual studio code，其他全点next就可以</p><p>在cmd中键入git验证是否安装</p><p>Git配置完成后显示如此</p><p>第一次时选择初始化仓库而后显示如此</p><p>.gitignore选择git要忽略的文件（一般是.vscode和build）</p><p>终端加入git bash</p><p>配置username和useremail键入命令：<br>设置用户名和邮箱<br>git config —global user.name “username”<br>git config —global user.email  useremail@qq.com<br>查看是否设置成功<br>git config user.name<br>git config user.email<br>查看全局配置<br>git config —global -l </p><p>在设置里去掉勾选use Editor As commit input</p><p>由此我们便完成了vscode+github的基本配置，之后对同一文件不需再次配置</p><p>接下来我们学习git的提交与发布（推送）<br>这是两个不同的步骤，提交是将程序文件保存到本地仓库，发布则是将程序文件发送到云端（也就是github上），具体地：</p><p>点击√后提示“请提供提交信息”，键入分支名（一般为master）</p><p>如此便得到了一个本地的master分支，然后就是把他发布到github上，点击发布branch</p><p>期间抛出的所有token全部点击是<br>成功后vscode会自动捕捉我们在github上的库</p><p>我们既可以直接键入名称，这样就会在github上自动创建一个该名称的分支。<br>也可以搜索已经在github上创建好的分支来保存它，补充介绍下如何在github上创建分支。<br>我们在自己的github上首页建一个新的库保存它，点击new</p><p>键入名称，描述以及是否公开</p><p>点击确定后就得到了一个空的github库</p><p>回到正题，我们选定好github的远程库后便可以点击发布branch将其上传到github<br>初次上传时vscode需要登录github，依次在弹出的token中点击sign in-&gt;authorize-&gt;confirm</p><p>完成后vscode弹出提示，发布完成。</p><p>之后每次修改程序，提交按钮都会再次高亮，同时显示修改了的（也就是要上传的）文件</p><p>我们只需要点击提交，然后同步更改即可完成覆写</p><p>在存在一个主分支(master)的情况下，还可以上传若干个其他分支</p><p>点击左下角的分支名，在上方弹出框中选择创建新分支，已创建的分支会显示在下方<br>分支创建成功后，右边的git又显示为“√提交”，则此时按照上面介绍的正常步骤便可以在主分支下创建一个新的分支。</p><p>由于github通常需要翻墙而且不太稳定，因而上传可能失败，记得检查网络配置<br>不行的话可以重启clash</p><p>常见警告/报错token：</p><p>直接点击始终就可以，之后不会再弹出</p><p>直接点击don’t show again就可以，之后不会再弹出</p><p>最简单粗暴的是关闭代理再打开就可以！更多方法参见附录</p><p>git命令集</p><ol><li>git clone <a href="https://……">https://……</a> 下载</li><li>git push 上传</li><li>git remote add origin <a href="https://……">https://……</a>. 添加远程仓库</li><li>git init 初始化本地仓库</li><li>git config —global https.proxy <a href="http://127.0.0.1:7890">http://127.0.0.1:7890</a> 添加远程端口 </li></ol><p>有时候出现连接不上网络的情况时使用该方法，需要在电脑设置上打开手动代理，http:// 后面的是代理ip地址和端口，仅限在挂梯子之后打开手动代理，否则会出现网络连接不上的问题</p><ol><li>git config —global http.proxy <a href="http://127.0.0.1:7890">http://127.0.0.1:7890</a> 添加远程端口</li><li>git config —global —list 配置信息列表</li><li>git config —global user.name name 配置名称</li><li>git config —global user.name email 配置邮件</li><li>git commit -m “initial commit” 提交初始仓库</li></ol><p>附录：<br>参考视频<a href="https://www.bilibili.com/video/BV1dK411p7RF">https://www.bilibili.com/video/BV1dK411p7RF</a><br>Git for Windows下载：<a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a><br>Github官网：<a href="https://github.com">https://github.com</a><br>解决unable to access…的一些方法：<br><a href="https://blog.csdn.net/qq_39808156/article/details/117510950">https://blog.csdn.net/qq_39808156/article/details/117510950</a><br><a href="https://blog.csdn.net/risroy/article/details/128887648">https://blog.csdn.net/risroy/article/details/128887648</a><br><a href="https://blog.csdn.net/qq_40520596/article/details/108479892">https://blog.csdn.net/qq_40520596/article/details/108479892</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编译进化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Keil学习</title>
+      <link href="/2022/08/09/keil/"/>
+      <url>/2022/08/09/keil/</url>
+      
+        <content type="html"><![CDATA[<p>Keil+vscode联合开发：<a href="https://www.yisu.com/zixun/607208.html">https://www.yisu.com/zixun/607208.html</a><br>字体问题：Edit-&gt;Configuration-&gt;Encoding 可以选择ANSI，UTF-8或GB2312<br>有时透过vscode打开时中文会出现乱码，此时一定要先把vscode的字体改成GB2312再保存，否则keil工程的中文会全部变成乱码<br>当然，上面这个博客写的很详细了，直接参照博客的方法也可以</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 嵌入式 </category>
+          
+          <category> 编译进化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Keil </tag>
+            
+            <tag> STM32 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LaTeX学习</title>
+      <link href="/2022/08/09/latex/"/>
+      <url>/2022/08/09/latex/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 编译进化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LaTex </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C#学习</title>
+      <link href="/2022/08/09/C#/"/>
+      <url>/2022/08/09/C#/</url>
+      
+        <content type="html"><![CDATA[<p>1.C# 数据类型<br>在 C# 中，变量分为以下几种类型：<br>值类型（Value types）：如需得到一个类型或一个变量在特定平台上的准确尺寸，可以使用sizeof方法。表达式sizeof(type)产生以字节为单位存储对象或类型的存储尺寸。<br>引用类型（Reference types）：<br>指针类型（Pointer types）：C# 中的指针与 C 或 C++ 中的指针有相同的功能。</p><p>2.C# 强制类型转换<br>在 C# 中，强制类型转换有两种方法：<br>其一是在变量前面加(type)，例如将一个 int 类型的变量赋值给 byte 类型的变量：<br>int i = 10;<br>byte b = (byte)i;<br>其二是使用Convert中的方法，例如将一个 double 类型的变量转化成 single 类型的变量：<br>double i=3.14;<br>float b=Convert.ToSingle(i);<br>强制类型转换也作用于字符串与数字的转换，其中将数字转换成字符串既可以使用i.ToString(“Fx”)也可以使用Convert.ToString(i)。<br>强制类型转换可能会造成数据丢失。</p><p>3.C# 支持的其他一些重要的运算符</p><p>4.C# 中的foreach循环：<br>C# 的 foreach 循环可以用来遍历集合类型，例如数组、列表、字典等。<br>以下是 foreach 循环的语法：<br>foreach (var item in collection)<br>{<br>    // 循环<br>}<br>collection 是要遍历的集合，item 是当前遍历到的元素。</p><p>5.C# 封装<br>C# 支持的访问修饰符如下所示：<br>public：所有对象都可以访问；<br>private：只有在该类对象内部可以访问；<br>protected：只有该类对象及其子类对象可以访问<br>internal：同一个程序文件内的对象可以访问；</p><p>6.C#方法与参数传递：<br>在 C# 中，定义方法的语法如下：<br>&lt;访问修饰符&gt; &lt;返回类型&gt; &lt;方法名&gt;(参数列表)<br>{<br>   //方法主体<br>}<br>按值传递参数：是参数传递的默认方式。在这种方式下，当调用一个方法时，会为每个值参数创建一个新的存储位置。实际参数的值会复制给形参，实参和形参使用的是两个不同内存中的值。所以，当形参的值发生改变时，不会影响实参的值，从而保证了实参数据的安全。<br>按引用传递参数：引用参数是一个对变量的内存位置的引用。当按引用传递参数时，它不会为这些参数创建一个新的存储位置，而是与提供给方法的实际参数具有相同的内存位置。在 C# 中，使用 ref 关键字声明引用参数。例如在定义时public void swap(ref int x, ref int y)，在使用时int a=3,b=5;swap(ref a, ref b)。<br>按输出传递参数：return 语句只能从函数中返回一个值。如果要从函数中返回多个值，可以使用输出参数，输出参数会把方法输出的数据赋给自己以供外部调用。在 C# 中，使用 out 关键字声明输出参数。例如：<br>public void getValue(out int x )<br>{<br>    int temp = 5;<br>    x = temp;<br>}<br>int a = 100;<br>getValue(out a);        //提醒：作为输出参数的变量可以不提前赋值<br>Console.WriteLine(a);    //a=5</p><p>7.C# 可空类型：<br>C# 提供了一个特殊的数据类型，nullable 类型（可空类型），可空类型可以表示其基础值类型正常范围内的值再加上一个 null 值。例如Nullable&lt; bool &gt; 变量可以被赋值为 true 或 false 或 null。声明一个 nullable 类型（可空类型）的语法如下：<br>&lt;变量类型&gt; ? &lt;变量名&gt; = null;    //例如int? num1 = null;<br>此外，C#还提供了一个被称为Null 合并运算符的功能，Null 合并运算符为类型转换定义了一个预设值，以防可空类型的值为 Null。它的格式为：<br>&lt;变量名&gt;??&lt;常量&gt;        //例如num3=num2 ?? 5.34<br>其意义是，如果第一个操作数的值为 null，则运算符返回第二个操作数的值，否则返回第一个操作数的值。在上例中，如果num2为空值则num3=5.34。</p><p>8.C# 数组：<br>（1）一维数组：<br>在 C# 中声明一个一维数组的语法是：&lt;变量类型&gt;[] &lt;数组名&gt;;<br>声明一个数组不会在内存中初始化数组。只有数组被初始化后，才可以赋值给数组。<br>数组是一个引用类型，所以数组初始化需要使用 new 关键字来创建数组的实例。<br>例如：<code>double[] balance = new double[10];</code><br>我们也可以在初始化数组的同时为其赋值，比如：<code>int [] marks = new int[5] &#123; 99, 98, 92, 97, 95&#125;;</code><br>其中new int[5]中的5可以省略，即可以改写为<code>int [] marks = new int[] &#123; 99, 98, 92, 97, 95&#125;;</code><br>我们可以使用foreach来遍历一个数组。<br>（2）多维数组：<br>在 C# 中声明一个多维数组的语法是：&lt;变量类型&gt;[,…,] &lt;数组名&gt;;<br>其中逗号的数量是数组的维数，数组中的每个元素使用形式为 a[ i , j , k, …]的元素名称来标识，其中 a 是数组名称， i , j , k, …是各维度的值。<br>初始化赋值公式例如：<code>int[,] a = new int[5, 2] &#123;&#123;0,0&#125;, &#123;1,2&#125;, &#123;2,4&#125;, &#123;3,6&#125;, &#123;4,8&#125; &#125;;//&#123;&#125;为行,为列`（3）交错数组：交错数组是数组的数组，也就是说交错数组是一维数组，而数组中的每个元素也都是数组。在 C# 中声明一个交错数组的语法是：<变量类型>[][] <数组名>;初始化赋值公式例如：`int[][] scores = new int[2][]&#123;new int[]&#123;92,93,94&#125;,new int[]&#123;85,66,87,88&#125;&#125;;</code><br>交错数组中各元素的数组长度可以不一样。<br>（4）传递数组给函数：可以通过数组名称来给函数传递一个指向数组的指针。<br>例如：<code>double getAverage(int[] arr, int size);</code><br><code>int [] balance = new int[]&#123;1000, 2, 3, 17, 50&#125;;</code><br><code>avg = getAverage(balance, 5 ) ;</code><br>（5）参数数组：当声明一个方法时，如果不能确定要传递给函数的参数数目，则可以使用参数数组解决这个问题，参数数组通常用于传递未知数量的参数给函数。为此，C# 提供了 params 关键字，当调用数组为形参的方法时，既可以传递数组实参，也可以传递一组数组元素。其格式为：访问修饰符 返回类型 方法名称( params 类型名称[] 数组名称)<br>例如：<code>public int AddElements(params int[] arr);</code><br>         <code>int sum = AddElements(512, 720, 250, 567, 889);</code><br>（6）：数组具有很多方法，可以用数组名.或Array.呼出。比较常用的有：<br>数组名.Length，Array.Copy/Sort/Reverse等</p><p>9.C# 字符串：<br>C# 定义字符串既可以使用char数组进行new创建，也可以直接用字符串string。<br>例如：<code>string Name=”Alan”;</code><br>又例如：<code>char[] letters = &#123; &#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;,&#39;o&#39; &#125;;</code><br>            <code>string greetings = new string(letters);</code><br>字符串string同数组array类似，也具有很多的内置方法。比较常用的有：</p><p>10.C# 结构体：<br>在 C# 中，结构体是值类型数据结构。它使得一个单一变量可以存储各种数据类型的相关数据。struct 关键字用于创建结构体。<br>例如，您可以按照如下的方式声明 Book 结构体：<br>struct Books{<br>   public string title;<br>   public string author;<br>   public string subject;<br>   public int book_id;<br>};<br>在 C# 中的结构体与传统的 C 或 C++ 中的结构体不同。C# 中的结构体有以下特点：<br>结构体可带有方法、字段、索引、属性、运算符方法和事件。<br>结构体可定义构造函数，但不能定义析构函数。<br>结构不能继承其他的结构或类，也不能作为其他结构或类的基，但可实现一个或多个接口。<br>结构成员的访问修饰符只能为public。<br>可以使用 New 操作符调用适当的构造函数创建结构体，也可以不使用 New 操作符即可被实例化，如果不使用 New 操作符，只有在所有的字段都被初始化之后，对象才能被使用。<br>比较类和结构，可以发现两者的不同在于：类是引用类型，结构是值类型且不支持继承。</p><p>11.C# 枚举：<br>C#声明枚举的一般语法是：<br>enum &lt;枚举体名&gt;<br>{<br>    枚举列表    //用逗号分隔的标识符列表<br>};<br>枚举列表中的每个符号代表一个比它前面的符号大一的整数值。默认情况下，第一个枚举符号的值是0，但我们也可以对第一个枚举符号进行赋值定义以规定其值。<br>例如：enum Days { Sun=1, Mon, tue, Wed, thu, Fri, Sat };<br>枚举体可以看做是一个类，因而使用对应枚举体符号时必须加上枚举体名前缀，例如Day.Sun。<br>枚举列表的符号类型属于枚举体名，因而在使用时通常需要进行强制类型转换来得到需要的数据类型（通常为int）。例如：int x = (int)Day.Sun;         //x=1</p><p>12.C# 类：<br>类的定义是以关键字 class 开始，后跟类的名称。类的主体，包含在一对花括号内。<br>下面是类定义的一般形式：<br>&lt;访问修饰符&gt; class  类名<br>{<br>    //成员变量<br>    &lt;访问修饰符&gt; &lt;变量类型&gt; 变量名1;<br>    …<br>     &lt;访问修饰符&gt; &lt;变量类型&gt; 变量名n;<br>    //成员方法<br>    &lt;访问修饰符&gt; &lt;返回类型&gt; 方法名1(参数列表)<br>    {<br>        //方法体<br>    }<br>    …<br>    &lt;访问修饰符&gt; &lt;返回类型&gt; 方法名m(参数列表)<br>    {<br>        //方法体<br>    }<br>}<br>类的默认访问修饰符是 internal，成员的默认访问修饰符是 private。<br>如果要访问类的成员，需要使用点（.）运算符。<br>类的成员函数是一个在类定义中有它的定义或原型的函数，就像其他变量一样。作为类的一个成员，它能在类的任何对象上操作，且能访问该对象的类的所有成员。<br>构造函数是类的一个特殊成员函数，当创建类的新对象时执行。构造函数的名称与类的名称完全相同，它没有返回类型，即public 类名(初值参数){方法体}。例如class line的构造函数：<br>public Line(double len)  // 参数化构造函数<br>{<br>Console.WriteLine(“对象已创建，length = {0}”, len);<br>length = len;<br>}<br>析构函数的名称是在类的名称前加上一个波浪形（~）作为前缀，它不返回值，也不带任何参数。析构函数用于在结束程序之前释放资源。析构函数不能继承或重载。例如~Line(){}。<br>可以使用 static 关键字把类成员定义为静态成员。这意味着无论有多少个类的对象被创建，只会有一个该静态成员的副本，换句话说，这意味着类中只有一个该成员的实例。例如：<br>class StaticVar<br>{<br>public static int num;<br>public void count()<br>{<br>num++;    //所有类的实例每调用一次count()，都只会给唯一的num加一<br>}<br>}<br>你也可以把一个成员函数声明为 static，这样的函数只能访问静态变量。<br>13.C# 继承<br>继承是面向对象程序设计中最重要的概念之一。继承允许我们根据一个类来定义另一个类，这使得创建和维护应用程序变得更容易。同时也有利于重用代码和节省开发时间。当创建一个类时，程序员不需要完全重新编写新的数据成员和成员函数，只需要设计一个新的类，继承已有的类的成员即可。这个已有的类被称为的基类，这个新的类被称为派生类。<br>一个类可以派生自多个类或接口，这意味着它可以从多个基类或接口继承数据和函数。<br>C# 中创建派生类的语法如下：<br>&lt;访问修饰符&gt; class &lt;基类&gt;<br>{<br>     //基类内容<br>}<br>&lt;访问修饰符&gt;class &lt;派生类&gt; : &lt;基类&gt;<br>{<br>//派生类内容<br>}<br>基类的初始化<br>派生类继承了基类的成员变量和成员方法。因此父类对象应在子类对象创建之前被创建。您可以在成员初始化列表中进行父类的初始化。<br>C# 多重继承：<br>多重继承指的是一个类别可以同时从多于一个父类继承行为与特征的功能。与单一继承相对，单一继承指一个类别只可以继承自一个父类。<br>C# 不支持多重继承。但是，我们可以使用接口来实现多重继承。</p><p>14.C# 多态性<br>多态是同一个行为具有多个不同表现形式或形态的能力。在面向对象编程中，多态性往往表现为”一个接口，多个功能”。<br>多态性可以是静态的或动态的。在静态多态性中，函数的响应是在编译时发生的。在动态多态性中，函数的响应是在运行时发生的。<br>（1）静态多态性：<br>在编译时，函数和对象的连接机制被称为早期绑定，也被称为静态绑定。C# 提供了两种技术来实现静态多态性，分别为函数重载和运算符重载。<br>函数重载：您可以在同一个范围内对相同的函数名有多个定义。函数的定义必须彼此不同，可以是参数列表中的参数类型不同，也可以是参数个数不同，但不能只是返回类型不同。<br>（2）动态多态性：<br>C# 允许您使用关键字 abstract 创建抽象类，用于提供接口的部分类的实现。当一个派生类继承自该抽象类时，实现即完成。抽象类包含抽象方法，抽象方法可被派生类实现（需要使用重载关键字override）。派生类具有更专业的功能。下面是有关抽象类的一些规则：<br>您不能创建一个抽象类的实例。<br>您不能在一个抽象类外部声明一个抽象方法。<br>通过在类定义前面放置关键字 sealed，可以将类声明为密封类。当一个类被声明为 sealed 时，它不能被继承。抽象类不能被声明为 sealed。<br>下面的例子演示了一个抽象类及其实现：<br>abstract class Shape            //抽象类，可以包含虚方法<br>{<br>abstract public int area();    //抽象方法，可以在派生类中实现，用abstract声明<br>}<br>class Rectangle:  Shape            //派生类实现抽象方法<br>{<br>private int length;<br>private int width;<br>public Rectangle( int a, int b)<br>{<br>length = a;<br>width = b;<br>}<br>public override int area ()    //实现抽象方法，用override声明<br>{<br>Console.WriteLine(“Rectangle 类的面积：”);<br>return (width * length);<br>}<br>}<br>当有一个定义在类中的函数需要在继承类中实现时，可以使用虚方法，虚方法是使用关键字 virtual 声明的，虚方法可以在不同的继承类中有不同的实现，而对虚方法的调用是在运行时发生的。动态多态性是通过抽象类和虚方法实现的。</p><p>15.C# 运算符重载<br>您可以重定义或重载 C# 中内置的运算符。因此，程序员也可以使用用户自定义类型的运算符。重载运算符是具有特殊名称的函数，是通过关键字 operator 后跟运算符的符号来定义的。与其他函数一样，重载运算符有返回类型和参数列表。C#要求所有的运算符重载都声明为public和static，且重载的运算符需要与原运算符有相同的操作数，故其格式为：<br>public static &lt;返回类型&gt; operator&lt;重载运算符&gt; (与与原运算符数量相同的参数列表)<br>{<br>//重载体<br>}<br>例如：<br>public static Box operator+ (Box b, Box c)    //重载运算符+<br>{<br>    Box box = new Box();<br>    box.length = b.length + c.length;<br>    box.breadth = b.breadth + c.breadth;<br>    box.height = b.height + c.height;<br>    return box;<br>}<br>Box3 = Box1 + Box2;                    //使用新重载的运算符</p><p>16.C# 接口<br>接口一般与其派生类结合使用，其中接口定义了所有派生类继承接口时应遵循的结构。即接口定义了 “是什么” 部分，派生类定义了 “怎么做” 部分。接口定义了属性、方法和事件，这些都是接口的成员。接口只包含了成员的声明，其本身并不实现任何功能，只是和实现该接口的派生类订立一个必须实现哪些行为的契约；而成员的具体定义是接口的派生类的责任。<br>接口使得实现接口的派生类在形式上保持一致。<br>抽象类在某种程度上与接口类似，但是，它们大多只是用在当只有少数方法由基类声明由派生类实现时。<br>接口使用 interface 关键字声明，它与类的声明类似。接口声明默认是 public 的。<br>下面是一个接口声明的实例：<br>interface IMyInterface<br>{<br>    void MethodToImplement();<br>}<br>以上代码定义了接口 IMyInterface。通常接口命令以 I 字母开头，这个接口只有一个方法 MethodToImplement()，且该方法在接口中并没有具体的实现。<br>接下来我们定义一个继承自该接口的派生类来实现以上接口：<br>class InterfaceImplementer : IMyInterface    //实现接口的派生类继承自接口<br>{<br>    static void Main()    //接口不能被实例化，只有实现了接口功能的派生类才能被实例化<br>    {<br>        InterfaceImplementer iImp = new InterfaceImplementer();<br>        iImp.MethodToImplement();<br>    }<br>    public void MethodToImplement()    //实现接口<br>    {<br>        Console.WriteLine(“MethodToImplement() called.”);<br>}<br>}<br>InterfaceImplementer 类实现了 IMyInterface 接口，接口的实现与类的继承语法格式类似。<br>当一个派生类继承接口后，就必须实现接口的方法 , 且方法名必须与接口定义的方法名一致。<br>接口继承：<br>如果一个接口继承其他接口，那么实现该接口的派生类就需要实现该接口以及其父类接口的所有成员。<br>以下实例定义了两个接口，分别是IMyInterface 和 IParentInterface。其中IMyInterface 继承自IParentInterface 接口，因此接口IMyInterface对应的派生类必须实现MethodToImplement() 和ParentInterfaceMethod()两个方法：<br>interface IParentInterface<br>{<br>    void ParentInterfaceMethod();<br>}<br>interface IMyInterface : IParentInterface    //接口IMyInterface继承自接口IParentInterface<br>{<br>    void MethodToImplement();<br>}<br>class InterfaceImplementer : IMyInterface    //实现接口的派生类继承自接口<br>{<br>    static void Main()                    //实例化派生类后可以同时使用所有接口的方法<br>    {<br>        InterfaceImplementer iImp = new InterfaceImplementer();<br>        iImp.MethodToImplement();<br>        iImp.ParentInterfaceMethod();<br>    }<br>    public void MethodToImplement()        //实现IMyInterface的方法<br>    {<br>        Console.WriteLine(“MethodToImplement() called.”);<br>    }<br>    public void ParentInterfaceMethod()    //实现IParentInterface的方法<br>    {<br>        Console.WriteLine(“ParentInterfaceMethod() called.”);<br>    }<br>}</p><p>17.C# 命名空间<br>命名空间的设计目的是提供一种让一组名称与其他名称分隔开的方式。在一个命名空间中声明的类的名称与另一个命名空间中声明的相同的类的名称不冲突，即不同命名空间中的名称可以重复。定义命名空间以关键字 namespace 开始，后跟命名空间的名称，如下所示：<br>namespace &lt;命名空间名&gt;<br>{<br>   // 代码声明<br>}<br>为了调用对应命名空间的函数或变量，会把命名空间的名称置于前面并用点分隔，如下所示：<br> &lt;命名空间名&gt;. &lt;函数或变量名&gt;;<br>下面的程序演示了命名空间的用法：<br>namespace first_space<br>{<br>   class namespace_cl<br>   {<br>      public void func()<br>      {<br>         Console.WriteLine(“Inside first_space”);<br>      }<br>   }<br>}<br>namespace second_space<br>{<br>   class namespace_cl<br>   {<br>      public void func()<br>      {<br>         Console.WriteLine(“Inside second_space”);<br>      }<br>   }<br>}<br>class TestClass<br>{<br>   static void Main(string[] args)<br>   {<br>      first_space.namespace_cl fc = new first_space.namespace_cl();<br>      second_space.namespace_cl sc = new second_space.namespace_cl();<br>      fc.func();<br>      sc.func();<br>   }<br>}<br>当上面的代码被编译和执行时，它会产生下列结果：<br>Inside first_space<br>Inside second_space<br>此外，我们也可以用using 关键字表明程序使用的是给定命名空间中的名称，这样在使用的时候就不用在前面加上命名空间名称，编译器在随后的代码会默认使用指定命名空间中的名称。例如，我们在程序中使用 System 命名空间，其中定义了类 Console。<br>我们可以只写：Console.WriteLine (“Hello there”);<br>当然，我们也可以写全称：System.Console.WriteLine(“Hello there”);<br>此外，命名空间可以被嵌套，即您可以在一个命名空间内定义另一个命名空间，如下所示：<br>namespace &lt;外部命名空间名&gt;<br>{<br>   // 代码声明<br>   namespace &lt;内嵌命名空间名&gt;<br>   {<br>     // 代码声明<br>   }<br>}<br>其访问关系仍然是使用点运算符访问嵌套的命名空间的成员。</p><p>18.C# 预处理器指令</p><h1 id="define-DEBUG"><a href="#define-DEBUG" class="headerlink" title="define DEBUG"></a>define DEBUG</h1><h1 id="define-VC-V10"><a href="#define-VC-V10" class="headerlink" title="define VC_V10"></a>define VC_V10</h1><p>public static void Main()<br>{</p><h1 id="if-DEBUG-amp-amp-VC-V10"><a href="#if-DEBUG-amp-amp-VC-V10" class="headerlink" title="if (DEBUG &amp;&amp; !VC_V10)"></a>if (DEBUG &amp;&amp; !VC_V10)</h1><p>Console.WriteLine(“DEBUG is defined”);</p><h1 id="elif-DEBUG-amp-amp-VC-V10"><a href="#elif-DEBUG-amp-amp-VC-V10" class="headerlink" title="elif (!DEBUG &amp;&amp; VC_V10)"></a>elif (!DEBUG &amp;&amp; VC_V10)</h1><p>Console.WriteLine(“VC_V10 is defined”);</p><h1 id="elif-DEBUG-amp-amp-VC-V10-1"><a href="#elif-DEBUG-amp-amp-VC-V10-1" class="headerlink" title="elif (DEBUG &amp;&amp; VC_V10)"></a>elif (DEBUG &amp;&amp; VC_V10)</h1><p>Console.WriteLine(“DEBUG and VC_V10 are defined”);</p><h1 id="else"><a href="#else" class="headerlink" title="else"></a>else</h1><p>Console.WriteLine(“DEBUG and VC_V10 are not defined”);</p><h1 id="endif"><a href="#endif" class="headerlink" title="endif"></a>endif</h1><p>}<br>19.C# 异常处理<br>异常是在程序执行期间出现的问题。C# 中的异常是对程序运行时出现的特殊情况的一种响应，比如尝试除以零。异常提供了一种把程序控制权从某个部分转移到另一个部分的方式。C# 异常处理时建立在四个关键词之上的：try、catch、finally 和 throw。<br>①try：一个 try 块标识了一个将被激活的特定的异常的代码块。后跟一个或多个 catch 块。<br>②catch：程序通过异常处理程序捕获try块中的异常。<br>③finally：finally 块用于执行给定的语句，不管异常是否被抛出都会执行。<br>④throw：当问题出现时，程序抛出一个异常，使用 throw关键字来完成。一般用于抛出用户自定义的异常，当try语句捕捉到throw抛出的异常，就会进入catch捕获阶段。<br>使用 try/catch 语法如下所示：<br>try<br>{<br>   // 可能引起异常的语句<br>}<br>catch( ExceptionName e1 )    //检测这些语句抛出的异常<br>{<br>   // 错误处理代码<br>}<br>….<br>catch( ExceptionName eN )    //可以列出多个 catch 语句捕获不同类型的异常<br>{<br>   // 错误处理代码<br>}<br>finally<br>{<br>   // 最终执行代码<br>}<br>C# 异常是使用类来表示的。C# 中的异常类主要是直接或间接地派生于 System.Exception 类。System.ApplicationException 和 System.SystemException 类是派生于 System.Exception 类的异常类。System.ApplicationException 类支持由应用程序生成的异常。程序员定义的异常都派生自该类；而System.SystemException 类是所有预定义的系统异常的基类。<br>下表列出了一些派生自 System.SystemException 类的预定义的异常类：<br>System.IO.IOException                处理 I/O 错误。<br>System.IndexOutOfRangeException    处理当方法指向超出范围的数组索引时生成的错误。<br>System.ArrayTypeMismatchException    处理当数组类型不匹配时生成的错误。<br>System.NullReferenceException        处理当依从一个空对象时生成的错误。<br>System.DivideByZeroException        处理当除以零时生成的错误。<br>System.InvalidCastException            处理在类型转换期间生成的错误。<br>下面是一个当除以零时抛出系统异常的实例：<br>public void division(int num1, int num2)<br>{<br>try<br>{<br>result = num1 / num2;<br>}<br>catch (DivideByZeroException e)<br>{<br>Console.WriteLine(“Exception caught: {0}”, e);<br>}<br>finally<br>{<br>Console.WriteLine(“Result: {0}”, result);<br>}<br>}<br>static void Main(string[] args)<br>{<br>DivNumbers d = new DivNumbers();<br>d.division(25, 0);<br>}<br>当上面的代码被编译和执行时，它会产生下列结果：<br>Exception caught: System.DivideByZeroException: Attempted to divide by zero.<br>下面的实例演示了抛出用户自定义的异常：<br>static void Main(string[] args)<br>{<br>Temperature temp = new Temperature();<br>try<br>{<br>temp.showTemp();            //当temperature=0时会抛出自定义异常被try捕捉<br>}<br>catch(TempIsZeroException e)    //捕获到自定义异常<br>{<br>Console.WriteLine(“TempIsZeroException: {0}”, e.Message);<br>}<br>}<br>public class TempIsZeroException: ApplicationException//自定义异常，继承ApplicationException<br>{<br>public TempIsZeroException(string message): base(message)<br>       {<br>       }<br>}<br>public class Temperature<br>{<br>int temperature = 0;<br>public void showTemp()<br>{<br>if(temperature == 0)    //抛出自定义异常TempIsZeroException的时机<br>          {<br>                 throw (new TempIsZeroException(“Zero Temperature found”));<br>          }<br>          else<br>          {<br>                 Console.WriteLine(“Temperature: {0}”, temperature);<br>          }<br>       }<br>}<br>当上面的代码被编译和执行时，它会产生下列结果：<br>TempIsZeroException: Zero Temperature found</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程语言学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C# </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PID控制</title>
+      <link href="/2022/08/09/PID/"/>
+      <url>/2022/08/09/PID/</url>
+      
+        <content type="html"><![CDATA[<p>引言：<br>在工业应用中PID及其衍生算法是应用最广泛的算法之一，是当之无愧的万能算法，如果能够熟练掌握PID算法的设计与实现过程，对于一般的研发人员来讲，应该是足够应对一般研发问题了，而难能可贵的是，在我所接触的控制算法当中，PID控制算法又是最简单，最能体现反馈思想的控制算法，可谓经典中的经典。经典的未必是复杂的，经典的东西常常是简单的，而且是最简单的。</p><p>PID控制算法的C语言实现一 PID算法原理<br>先看看PID算法的一般形式：<br>PID的流程简单到了不能再简单的程度，通过误差信号控制被控量，而控制器本身就是比例、积分、微分三个环节的加和。这里我们规定（在t时刻）：<br>   1.输入量为rin(t);（设定值）<br>   2.输出量为rout(t);（实际值）<br>   3.偏差量为err(t)=rin(t)-rout(t);</p><p>   理解一下这个公式，主要从下面几个问题着手，为了便于理解，把控制环境具体一下：<br>   1.规定这个流程是用来为直流电机调速的;<br>   2.输入量rin(t)为电机转速预定值;<br>   3.输出量rout(t)为电机转速实际值;<br>   4.执行器为直流电机;<br>   5.传感器为光电码盘，假设码盘为10线;<br>   6.直流电机采用PWM调速 转速用单位 转/min 表示;</p><p>  不难看出以下结论：<br>   1.输入量rin（t）为电机转速预定值（转/min）;</p><ol><li><p>输出量rout(t)为电机转速实际值（转/min）;<br>3.偏差量为预定值和实际值之差（转/min）;</p><p>那么以下几个问题需要弄清楚：<br>1.通过PID环节之后的U(t)是什么值呢？<br>2.控制执行器（直流电机）转动转速应该为电压值（也就是PWM占空比）。<br>3.那么U(t)与PWM之间存在怎样的联系呢？</p></li></ol><p><a href="http://blog.21ic.com/user1/3407/archives/2006/33541.html（见附录1）这篇文章上给出了一种方法，即，每个电压对应一个转速，电压和转速之间呈现线性关系。但是我考虑这种方法的前提是把直流电机的特性理解为线性了，而实际情况下，直流电机的特性绝对不是线性的，或者说在局部上是趋于线性的，这就是为什么说PID调速有个范围的问题。具体看一下http://articles.e-works.net.cn/component/article90249.htm（见附录2）这篇文章就可以了解了。所以在正式进行调速设计之前，需要现有开环系统，测试电机和转速之间的特性曲线（或者查阅电机的资料说明），然后再进行闭环参数整定。这篇先写到这，下一篇说明连续系统的离散化问题。并根据离散化后的特点讲述位置型PID和增量型PID的用法和C语言实现过程。">http://blog.21ic.com/user1/3407/archives/2006/33541.html（见附录1）这篇文章上给出了一种方法，即，每个电压对应一个转速，电压和转速之间呈现线性关系。但是我考虑这种方法的前提是把直流电机的特性理解为线性了，而实际情况下，直流电机的特性绝对不是线性的，或者说在局部上是趋于线性的，这就是为什么说PID调速有个范围的问题。具体看一下http://articles.e-works.net.cn/component/article90249.htm（见附录2）这篇文章就可以了解了。所以在正式进行调速设计之前，需要现有开环系统，测试电机和转速之间的特性曲线（或者查阅电机的资料说明），然后再进行闭环参数整定。这篇先写到这，下一篇说明连续系统的离散化问题。并根据离散化后的特点讲述位置型PID和增量型PID的用法和C语言实现过程。</a><br>PID控制算法的C语言实现二 PID算法的离散化<br>上一节中，我论述了PID算法的基本形式，并对其控制过程的实现有了一个简要的说明，通过上一节的总结，基本已经可以明白PID控制的过程。这一节中先继续上一节内容补充说明一下。<br>1.PID控制其实是对偏差的控制过程<br>2.如果偏差为0,则比例环节不起作用，只有存在偏差时，比例环节才起作用。<br>3.积分环节主要是用来消除静差——静差，是系统稳定后输出值和设定值之间的差值，积分环节实际上就是偏差累计的过程，把累计的误差加到原有系统上以抵消系统造成的静差。<br>这里我的理解是，如果在静差持续存在的时候，说明u(t)仍不够大/小，通过对该偏差的持续累积增大/减小u(t)的值，来使实际值向设定值靠近。<br>4.而微分信号则反应了偏差信号的变化趋势，根据偏差信号的变化趋势来进行超前调节，从而增加了系统的快速性。这里我的理解是，进行预测未来，当增长量过大时du(t)/dt也会反向很大，起到来拒去留，稳定系统的效果。</p><p>这是PID的数学表述：</p><p>下面将对PID连续系统离散化，从而方便在处理器上实现：<br>假设采样间隔为T，则在第K T时刻：<br>偏差err(K)=rin(K)-rout(K);<br>积分环节用加和的形式表示，即err(K)+err(K-1)+……;<br>微分环节用斜率的形式表示，即[err(K)-err(K-1)]/T;（T为采样时间）<br>从而形成如下PID离散表示形式：<br>则u(K)可表示成为：ActualSpeed=Kp<em>err+Ki</em>integral+Kd*(err-err_last)<br>用离散型数学表达即为：</p><p>这种表述形式称为位置型PID。<br>且由连续型易得Ki=Kp<em>T/Ti,Kd=Kp</em>Td/T，其中T为采样时间可知<br>Ti称为积分时间，Td称为积分时间。他们可以替代Ki，Kd，两者地位相同（参数变种）<br>从这个公式可以知道Ki，Kd均受到Kp的影响</p><p>另外一种表述方式为增量式PID：<br>incrementSpeed=Kp<em>(err-err_next)+Ki</em>err+Kd<em>(err-2</em>err_next+err_last);<br>ActualSpeed+=incrementSpeed<br>这就是离散化PID的增量式表示方式，增量式的表达结果和最近三次的偏差有关，这样就大大提高了系统的稳定性。需要注意最终的输出结果应该是增量式PID的累加。</p><p>PID的离散化过程基本思路就是这样，下面是将离散化的公式转换成为C语言。<br>PID控制算法的C语言实现三 位置型PID的C语言实现<br>第一步：定义PID变量结构体，代码如下：<br>struct _pid{<br>    float SetSpeed;            //定义设定值<br>    float ActualSpeed;        //定义实际值<br>    float err;                //定义偏差值<br>    float err_last;            //定义上一个偏差值<br>    float Kp,Ki,Kd;            //定义比例、积分、微分系数<br>    float voltage;          //定义电压值（控制执行器的变量）（有的地方也用电流）<br>    float integral;            //定义积分值<br>}pid;<br>控制算法中所需要用到的参数在一个结构体中统一定义，方便后面的使用。<br>  第二部：初始化变量，代码如下：<br>void PID_init(){<br>    printf(“PID_init begin \n”);<br>    pid.SetSpeed=0.0;<br>    pid.ActualSpeed=0.0;<br>    pid.err=0.0;<br>    pid.err_last=0.0;<br>    pid.voltage=0.0;<br>    pid.integral=0.0;<br>    pid.Kp=0.2;<br>    pid.Ki=0.015;<br>    pid.Kd=0.2;<br>    printf(“PID_init end \n”);<br>}<br>统一初始化变量，尤其是Kp,Ki,Kd三个参数，调试过程当中，对于要求的控制效果，可以通过调节这三个量直接进行调节。<br>第三步：编写控制算法，代码如下：<br>float PID_realize(float speed){    //传入的参数用作设定值<br>    pid.SetSpeed=speed;<br>    pid.err=pid.SetSpeed-pid.ActualSpeed;    //偏差值<br>    pid.integral+=pid.err;        //偏差值的积分累加，用作I<br>//通过PID算法得到pid下的电压，通过电压控制实际速度<br>//这里没有dt是因为dt由系统程序（时钟）决定，因为会把这段语句放入循环<br>    pid.voltage=pid.Kp<em>pid.err+pid.Ki</em>pid.integral+pid.Kd<em>(pid.err-pid.err_last);<br>    pid.err_last=pid.err;    //上次的偏差值，用作D运算<br>    pid.ActualSpeed=pid.voltage</em>1.0;    //电机电压与实际速度比例为1<br>    return pid.ActualSpeed;<br>}<br>注意：这里用了最基本的算法实现形式，没有考虑死区问题，没有设定上下限，只是对公式的一种直接的实现，后面的介绍当中还会逐渐的对此改进。</p><p>下面是测试代码：<br>int main(){<br>    printf(“System begin \n”);<br>    PID_init();<br>    int count=0;<br>    while(count&lt;1000)<br>    {<br>        float speed=PID_realize(200.0);    //循环PID逼近200<br>        printf(“%f\n”,speed);<br>        count++;<br>    }<br>return 0;<br>}</p><p>PID控制算法的C语言实现四 增量型PID的C语言实现<br>上一节中介绍了最简单的位置型PID的实现手段，这一节主要讲解增量式PID的实现方法，实现过程仍然是分为定义变量、初始化变量、实现控制算法函数、算法测试四个部分。#include<stdio.h></p><h1 id="include"><a href="#include" class="headerlink" title="include"></a>include<stdlib.h></h1><p>struct _pid{<br>    float SetSpeed;            //定义设定值<br>    float ActualSpeed;        //定义实际值<br>    float err;                //定义偏差值<br>    float err_next;            //定义上一个偏差值<br>    float err_last;            //定义上上个的偏差值<br>    float Kp,Ki,Kd;            //定义比例、积分、微分系数<br>}pid;</p><p>void PID_init(){<br>    pid.SetSpeed=0.0;<br>    pid.ActualSpeed=0.0;<br>    pid.err=0.0;<br>    pid.err_last=0.0;<br>    pid.err_next=0.0;<br>    pid.Kp=0.2;<br>    pid.Ki=0.015;<br>    pid.Kd=0.2;<br>}</p><p>float PID_realize(float speed){<br>    pid.SetSpeed=speed;<br>    pid.err=pid.SetSpeed-pid.ActualSpeed;</p><p>//这里与位置式不同的是，增量式得到的是一个delta而不是可以直接用的实际值<br>//最后需要将delta累加起来才能得到实际速度<br>float incrementSpeed=pid.Kp<em>(pid.err-pid.err_next)+pid.Ki</em>pid.err+pid.Kd<em>(pid.err-2</em>pid.err_next+pid.err_last);<br>pid.ActualSpeed+=incrementSpeed;        //累加delta得实际速度<br>    pid.err_last=pid.err_next;<br>    pid.err_next=pid.err;<br>    return pid.ActualSpeed;<br>}</p><p>int main(){<br>    PID_init();<br>    int count=0;<br>    while(count&lt;1000)<br>    {<br>        float speed=PID_realize(200.0);<br>        printf(“%f\n”,speed);<br>        count++;<br>    }<br>    return 0;<br>}</p><p>PID控制算法的C语言实现五 积分分离的PID控制算法C语言实现<br>通过三、四两篇文章，基本上已经弄清楚了PID控制算法的最常规的表达方法。在普通PID控制中，引入积分环节的目的，主要是为了消除静差，提高控制精度。但是在启动、结束或大幅度增减设定时，短时间内系统输出有很大的偏差（详见pid数据开头部分）会造成PID运算的积分积累，导致控制量超过执行机构可能允许的最大动作范围对应极限控制量，从而引起较大的超调，甚至是震荡，这是绝对不允许的。<br>为了克服这一问题，引入了积分分离的概念，基本思路是当被控量与设定值偏差较大时，取消积分作用; 当被控量接近给定值时，引入积分控制，以消除静差，提高精度。其具体实现代码如下：<br>    pid.Kp=0.2;<br>    pid.Ki=0.04;<br>    pid.Kd=0.2;  //初始化过程</p><p>if(abs(pid.err)&gt;200)    //200太极限了，总之就是当偏差值过大时不引入积分(index=0且不累计)<br>    index=0;<br>else<br>{<br>    index=1;<br>pid.integral+=pid.err;<br>}<br>pid.voltage=pid.Kp<em>pid.err+index</em>pid.Ki<em>pid.integral+pid.Kd</em>(pid.err-pid.err_last);<br>其他代码相同，不做赘述</p><p>PID控制算法的C语言实现六 抗积分饱和的PID控制算法C语言实现<br>   所谓的积分饱和现象是指如果系统存在一个方向的偏差，PID控制器的输出由于积分作用的不断累加而加大，从而导致执行机构达到极限位置，若控制器输出U(k)继续增大，执行器开度不可能再增大，此时计算机输出控制量超出了正常运行范围而进入饱和区。一旦系统出现反向偏差，u(k)逐渐从饱和区退出。进入饱和区越深则退出饱和区时间越长。在这段时间里，执行机构仍然停留在极限位置而不随偏差反向而立即做出相应的改变，这时系统就像失控一样，造成控制性能恶化，这种现象称为积分饱和现象或积分失控现象。<br>    防止积分饱和的方法之一就是抗积分饱和法，该方法的思路是在计算u(k)时，首先判断上一时刻的控制量u(k-1)是否已经超出了极限范围： 如果u(k-1)&gt;umax，则只累加负偏差; 如果u(k-1)&lt;umin，则只累加正偏差。从而避免控制量长时间停留在饱和区。直接贴出代码，不懂的看看前面几节的介绍。<br>struct _pid{<br>    float SetSpeed;            //定义设定值<br>    float ActualSpeed;        //定义实际值<br>    float err;                //定义偏差值<br>    float err_last;            //定义上一个偏差值<br>    float Kp,Ki,Kd;            //定义比例、积分、微分系数<br>    float voltage;            //定义电压值（控制执行器的变量）<br>    float integral;            //定义积分值<br>    float umax;<br>    float umin;<br>}pid;</p><p>void PID_init(){<br>    printf(“PID_init begin \n”);<br>    pid.SetSpeed=0.0;<br>    pid.ActualSpeed=0.0;<br>    pid.err=0.0;<br>    pid.err_last=0.0;<br>    pid.voltage=0.0;<br>    pid.integral=0.0;<br>    pid.Kp=0.2;<br>   pid.Ki=0.1;       //注意，和上几次相比，这里加大了积分环节的值<br>    pid.Kd=0.2;<br>    pid.umax=400;    //阈值[-200,400]<br>    pid.umin=-200;<br>    printf(“PID_init end \n”);<br>}<br>float PID_realize(float speed){<br>    int index;<br>    pid.SetSpeed=speed;<br>    pid.err=pid.SetSpeed-pid.ActualSpeed;<br>   if(pid.ActualSpeed&gt;pid.umax)    //超过正阈值<br>    {</p><pre><code>       if(abs(pid.err)&gt;200)         //积分分离        index=0;      else</code></pre><p>{<br>            index=1;<br>            if(pid.err<0) pid.integral+=pid.err;    //超过正阈值了，只累积负偏差          }    }else if(pid.ActualSpeed<pid.umin){    //超过负阈值        if(abs(pid.err)>200)<br>            index=0;<br>        else<br>{<br>            index=1;<br>            if(pid.err&gt;0)  pid.integral+=pid.err;        //超过负阈值了，只累积正偏差<br>}<br>    }<br>else{    //未超过阈值，正常计算<br>        if(abs(pid.err)&gt;200)                    //积分分离过程<br>            index=0;<br>else{<br>            index=1;<br>            pid.integral+=pid.err;    //正常累积<br>        }<br>    }</p><pre><code>pid.voltage=pid.Kp*pid.err+index*pid.Ki*pid.integral+pid.Kd*(pid.err-pid.err_last);pid.err_last=pid.err;pid.ActualSpeed=pid.voltage*1.0;return pid.ActualSpeed;</code></pre><p>}</p><p>PID控制算法的C语言实现七 梯形积分的PID控制算法C语言实现<br>先看一下梯形算法的积分环节公式（？）<br>作为PID控制律的积分项，其作用是消除余差，为了尽量减小余差，应提高积分项运算精度，为此可以将矩形积分改为梯形积分，具体实现的语句为：<br>pid.voltage=pid.Kp<em>pid.err+index</em>pid.Ki<em>pid.integral/2+pid.Kd</em>(pid.err-pid.err_last);<br>最后运算的稳定数据为：199.999878，较教程六中的199.9999390而言，精度进一步提高。</p><p>PID控制算法的C语言实现八 变积分的PID控制算法C语言实现<br>   变积分PID可以看成是积分分离的PID算法的更一般的形式。在普通的PID控制算法中，由于积分系数ki是常数，所以在整个控制过程中，积分增量是不变的。但是，系统对于积分项的要求是，系统偏差大时，积分作用应该减弱甚至是全无，而在偏差小时，则应该加强。积分系数取大了会产生超调，甚至积分饱和，取小了又不能短时间内消除静差。因此，根据系统的偏差大小改变积分速度是有必要的。<br>   变积分PID的基本思想是设法改变积分项的累加速度，使其与偏差大小相对应：偏差越大，积分越慢; 偏差越小，积分越快。</p><p>   这里给积分系数前加上一个比例值index：（相比于积分分离更加精确了）<br>   当abs(err)<180时，index=1;   当180<abs(err)<200时，index=（200-abs(err)）/20;   当abs(err)>200时，index=0;<br>   最终的比例环节的比例系数值为ki*index;    </p><p>   具体PID实现代码如下：<br>    pid.Kp=0.4;<br>    pid.Ki=0.2;    //增加了积分系数<br>    pid.Kd=0.2;</p><p>   float PID_realize(float speed){<br>    float index;<br>    pid.SetSpeed=speed;<br>    pid.err=pid.SetSpeed-pid.ActualSpeed;</p><pre><code>if(abs(pid.err)&gt;200)           //变积分过程，调整I在pid不同阶段中的重要性&#123;index=0.0;&#125;else if(abs(pid.err)&lt;180)&#123;index=1.0;pid.integral+=pid.err;&#125;else&#123;index=(200-abs(pid.err))/20;pid.integral+=pid.err;&#125;pid.voltage=pid.Kp*pid.err+index*pid.Ki*pid.integral+pid.Kd*(pid.err-pid.err_last);pid.err_last=pid.err;pid.ActualSpeed=pid.voltage*1.0;return pid.ActualSpeed;</code></pre><p>}</p><p> PID参数整定方法：<br>PID的整定方法很多，其效果在不同的系统里各有千秋，可以多尝试不同的方法整定，来达到最佳的整定结果。<br>1.知识储备：<br>比例增益Kp是指输出变化对偏差变化之比。而比例度δ则是指调节器的偏差值占输出值变化的百分比。这两种表示方法互为倒数关系，即：KP=1/δ。<br>Ki与Ti，Kd与Td的转化：Ki=Kp<em>T/Ti,Kd=Kp</em>Td/T<br>2.衰减曲线法：<br>本方法实际是临界比例度法一种变形，本方法操作简便，凑试时间较短。首先把Ki，Kd置零，用一个较大的Kp来纯比例作用系统，在比例度逐步减少的过程中，就会出现右图所示的过渡过程。<br>这时控制过程的比例度Kp称为n:1衰减比例度δs；两个波峰之间的距离称为n:1衰减周期Ts。而衰减曲线法就是在纯比例作用的控制系统中，求得衰减比例度δs和衰减周期Ts，并依据这两个数据和经验表格来得到PID的系数。具体地分为4:1和10:1衰减曲线法。<br>4:1衰减曲线法整定步骤：首先把Ki，Kd置零，Kp放至较大的适当值，使控制系统按纯比例作用的方式投入运行。然后慢慢地减少比例度，观察调节器的输出及控制过程的波动情况，直到找出4:1的衰减过程为止，并记下此时的δs（Kp）和Ts。<br>在部分调节系统中，由于采用4:1衰减比仍嫌振荡比较厉害，则可采用10：1的衰减过程。10:1衰减曲线法整定步骤：和4:1衰减曲线法在过程上完全一致，只是采用的整定参数和经验公式不同。此时所需的参数为衰减比例度δs和首次峰值加速时间Tr。<br>根据n:1选择衰减比例度s和衰减周期Ts、首次峰值加速时间Tr的经验表格计算<br>注意：网上给出了不同的经验表格，可以多次尝试选最优。表格3中的Ti，Td改成Ts。</p><p>3.临界比例度法</p><p>4.经验公式：<br>Kp调整为0.00100-0.01000之间<br>Ki调整在0.00050左右<br>Kd调整在0.00005-0.00020之间<br>RPM=15000：0.006 0.0001 0.00025<br>减小超调通过增大Kp，加快回落通过增大Ki，减少震荡通过增大Kd</p><p>④先将比例度放在一个比计算值大的数值上，然后加上积分时间Ti，再慢慢加上微分时间Td。操作时一定要按“PID序加参数”，即先P次I最后D，不要破坏了这个次序。<br>⑤把比例度降到计算值上，通过观察曲线，再作适当的调整各参数。即“观看运行细调整”，直到找出最佳值。</p><p>PID整定经验：<br>1.纯Kp情况下的曲线大致如此，此时可以看到所谓的衰减曲线法的衰减率。如果不是纯Kp下发生类似曲线，也可能是Kp过大或Kd过小</p><p>2.PID整定时出现这种状况（超调）通常是Ki过大导致的，此时可以调小Ki解决。此时也可以调大Kd，但可能对后续阶段产生影响。通常见于微小超调情况下，调小Ki有很好的效果。但由于Ki过小会导致静差，实在不行也可以调大Kp（因为Kp调大会间接增强Kd在上升段的影响，这是可以接受的。不要误以为Kp过大导致超调而调小Kp，实际上这是Kd来拒去留效果的表现）同理当反向超调时可以调大Ki等。</p><p>3.当长久情况下PID一直回不到预设值，此时是Ki过小无法控制静差导致的，应该调大Ki。此外，若是稳定后误差±过大，则应该调大Kd。</p><p>4.此时通常是因为Kp过小或是Kd过大导致的，体现在上升过程过慢且会有一个大而光滑的弧。此时需要调大Kp或调小Kd。</p><p>5.良好的PID曲线。快速上升，准确停止，稳态误差不大。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 控制理论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PID </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>深度学习</title>
       <link href="/2022/08/09/DeepLearning/"/>
       <url>/2022/08/09/DeepLearning/</url>
@@ -106,22 +362,22 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[/* 页脚与头图透明 */#footer {    background: transparent !important;}#page-header {    background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {    background: transparent !important;}#page-header::before {    background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {    background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}/* 小冰分类分类磁铁黑夜模式适配 *//* 一般状态 */[data-theme="dark"] .magnet_link_context {    background: #1e1e1e;    color: antiquewhite;}/* 鼠标悬浮状态 */[data-theme="dark"] .magnet_link_context:hover {    background: #3ecdf1;    color: #f2f2f2;}/* 翻页按钮居中 */#pagination {    width: 100%;    margin: auto;}/* 鼠标样式 */#cursor {    position: fixed;    width: 16px;    height: 16px;    /* 这里改变跟随的底色 */    background: rgb(57, 197, 187);    border-radius: 8px;    opacity: 0.25;    z-index: 10086;    pointer-events: none;    transition: 0.2s ease-in-out;    transition-property: background, opacity, transform;}#cursor.hidden {    opacity: 0;}#cursor.hover {    opacity: 0.1;    transform: scale(2.5);    -webkit-transform: scale(2.5);    -moz-transform: scale(2.5);    -ms-transform: scale(2.5);    -o-transform: scale(2.5);}#cursor.active {    opacity: 0.5;    transform: scale(0.5);    -webkit-transform: scale(0.5);    -moz-transform: scale(0.5);    -ms-transform: scale(0.5);    -o-transform: scale(0.5);}:root {    --trans-light: rgba(255, 255, 255, 0.88);    --trans-dark: rgba(25, 25, 25, 0.88);    --border-style: 1px solid rgb(169, 169, 169);    --backdrop-filter: blur(5px) saturate(150%);}/* 首页文章卡片 */#recent-posts>.recent-post-item {    background: var(--trans-light);    backdrop-filter: var(--backdrop-filter);    border-radius: 25px;    border: var(--border-style);}/* 首页侧栏卡片 */#aside-content .card-widget {    background: var(--trans-light);    backdrop-filter: var(--backdrop-filter);    border-radius: 18px;    border: var(--border-style);}/* 文章页、归档页、普通页面 */div#post,div#page,div#archive {    background: var(--trans-light);    backdrop-filter: var(--backdrop-filter);    border: var(--border-style);    border-radius: 20px;}/* 导航栏 */#page-header.nav-fixed #nav {    background: rgba(255, 255, 255, 0.75);    backdrop-filter: var(--backdrop-filter);}[data-theme="dark"] #page-header.nav-fixed #nav {    background: rgba(0, 0, 0, 0.7) !important;}/* 夜间模式遮罩 */[data-theme="dark"] #recent-posts>.recent-post-item,[data-theme="dark"] #aside-content .card-widget,[data-theme="dark"] div#post,[data-theme="dark"] div#archive,[data-theme="dark"] div#page {    background: var(--trans-dark);}/* 夜间模式页脚页头遮罩透明 */[data-theme="dark"] #footer::before {    background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}/* 阅读模式 */.read-mode #aside-content .card-widget {    background: rgba(158, 204, 171, 0.5) !important;}.read-mode div#post {    background: rgba(158, 204, 171, 0.5) !important;}/* 夜间模式下的阅读模式 */[data-theme="dark"] .read-mode #aside-content .card-widget {    background: rgba(25, 25, 25, 0.9) !important;    color: #ffffff;}[data-theme="dark"] .read-mode div#post {    background: rgba(25, 25, 25, 0.9) !important;    color: #ffffff;}/* 日间模式不生效 */[data-theme="light"] #site-name,[data-theme="light"] #site-title,[data-theme="light"] #site-subtitle,[data-theme="light"] #post-info {    animation: none;}/* 夜间模式生效 */[data-theme="dark"] #site-name,[data-theme="dark"] #site-title {    animation: light_15px 10s linear infinite;}[data-theme="dark"] #site-subtitle {    animation: light_10px 10s linear infinite;}[data-theme="dark"] #post-info {    animation: light_5px 10s linear infinite;}/* 黑夜霓虹灯，关键帧描述 */@keyframes light_15px {    0% {        text-shadow: #5636ed 0 0 15px;    }    12.5% {        text-shadow: #11ee5e 0 0 15px;    }    25% {        text-shadow: #f14747 0 0 15px;    }    37.5% {        text-shadow: #f1a247 0 0 15px;    }    50% {        text-shadow: #f1ee47 0 0 15px;    }    50% {        text-shadow: #b347f1 0 0 15px;    }    62.5% {        text-shadow: #002afa 0 0 15px;    }    75% {        text-shadow: #ed709b 0 0 15px;    }    87.5% {        text-shadow: #39c5bb 0 0 15px;    }    100% {        text-shadow: #5636ed 0 0 15px;    }}@keyframes light_10px {    0% {        text-shadow: #5636ed 0 0 10px;    }    12.5% {        text-shadow: #11ee5e 0 0 10px;    }    25% {        text-shadow: #f14747 0 0 10px;    }    37.5% {        text-shadow: #f1a247 0 0 10px;    }    50% {        text-shadow: #f1ee47 0 0 10px;    }    50% {        text-shadow: #b347f1 0 0 10px;    }    62.5% {        text-shadow: #002afa 0 0 10px;    }    75% {        text-shadow: #ed709b 0 0 10px;    }    87.5% {        text-shadow: #39c5bb 0 0 10px;    }    100% {        text-shadow: #5636ed 0 0 10px;    }}@keyframes light_5px {    0% {        text-shadow: #5636ed 0 0 5px;    }    12.5% {        text-shadow: #11ee5e 0 0 5px;    }    25% {        text-shadow: #f14747 0 0 5px;    }    37.5% {        text-shadow: #f1a247 0 0 15px;    }    50% {        text-shadow: #f1ee47 0 0 5px;    }    50% {        text-shadow: #b347f1 0 0 5px;    }    62.5% {        text-shadow: #002afa 0 0 5px;    }    75% {        text-shadow: #ed709b 0 0 5px;    }    87.5% {        text-shadow: #39c5bb 0 0 5px;    }    100% {        text-shadow: #5636ed 0 0 5px;    }}]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[/* 页脚与头图透明 */#footer {    background: transparent !important;}#page-header {    background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {    background: transparent !important;}#page-header::before {    background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {    background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}/* 小冰分类分类磁铁黑夜模式适配 *//* 一般状态 */[data-theme="dark"] .magnet_link_context {    background: #1e1e1e;    color: antiquewhite;}/* 鼠标悬浮状态 */[data-theme="dark"] .magnet_link_context:hover {    background: #3ecdf1;    color: #f2f2f2;}/* 翻页按钮居中 */#pagination {    width: 100%;    margin: auto;}/* 鼠标样式 */#cursor {    position: fixed;    width: 16px;    height: 16px;    /* 这里改变跟随的底色 */    background: rgb(57, 197, 187);    border-radius: 8px;    opacity: 0.25;    z-index: 10086;    pointer-events: none;    transition: 0.2s ease-in-out;    transition-property: background, opacity, transform;}#cursor.hidden {    opacity: 0;}#cursor.hover {    opacity: 0.1;    transform: scale(2.5);    -webkit-transform: scale(2.5);    -moz-transform: scale(2.5);    -ms-transform: scale(2.5);    -o-transform: scale(2.5);}#cursor.active {    opacity: 0.5;    transform: scale(0.5);    -webkit-transform: scale(0.5);    -moz-transform: scale(0.5);    -ms-transform: scale(0.5);    -o-transform: scale(0.5);}:root {    --trans-light: rgba(255, 255, 255, 0.88);    --trans-dark: rgba(25, 25, 25, 0.88);    --border-style: 1px solid rgb(169, 169, 169);    --backdrop-filter: blur(5px) saturate(150%);}/* 首页文章卡片 */#recent-posts>.recent-post-item {    background: var(--trans-light);    backdrop-filter: var(--backdrop-filter);    border-radius: 25px;    border: var(--border-style);}/* 首页侧栏卡片 */#aside-content .card-widget {    background: var(--trans-light);    backdrop-filter: var(--backdrop-filter);    border-radius: 18px;    border: var(--border-style);}/* 文章页、归档页、普通页面 */div#post,div#page,div#archive {    background: var(--trans-light);    backdrop-filter: var(--backdrop-filter);    border: var(--border-style);    border-radius: 20px;}/* 导航栏 */#page-header.nav-fixed #nav {    background: rgba(255, 255, 255, 0.75);    backdrop-filter: var(--backdrop-filter);}[data-theme="dark"] #page-header.nav-fixed #nav {    background: rgba(0, 0, 0, 0.7) !important;}/* 夜间模式遮罩 */[data-theme="dark"] #recent-posts>.recent-post-item,[data-theme="dark"] #aside-content .card-widget,[data-theme="dark"] div#post,[data-theme="dark"] div#archive,[data-theme="dark"] div#page {    background: var(--trans-dark);}/* 夜间模式页脚页头遮罩透明 */[data-theme="dark"] #footer::before {    background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}/* 阅读模式 */.read-mode #aside-content .card-widget {    background: rgba(158, 204, 171, 0.5) !important;}.read-mode div#post {    background: rgba(158, 204, 171, 0.5) !important;}/* 夜间模式下的阅读模式 */[data-theme="dark"] .read-mode #aside-content .card-widget {    background: rgba(25, 25, 25, 0.9) !important;    color: #ffffff;}[data-theme="dark"] .read-mode div#post {    background: rgba(25, 25, 25, 0.9) !important;    color: #ffffff;}/* 日间模式不生效 */[data-theme="light"] #site-name,[data-theme="light"] #site-title,[data-theme="light"] #site-subtitle,[data-theme="light"] #post-info {    animation: none;}/* 夜间模式生效 */[data-theme="dark"] #site-name,[data-theme="dark"] #site-title {    animation: light_15px 10s linear infinite;}[data-theme="dark"] #site-subtitle {    animation: light_10px 10s linear infinite;}[data-theme="dark"] #post-info {    animation: light_5px 10s linear infinite;}/* 黑夜霓虹灯，关键帧描述 */@keyframes light_15px {    0% {        text-shadow: #5636ed 0 0 15px;    }    12.5% {        text-shadow: #11ee5e 0 0 15px;    }    25% {        text-shadow: #f14747 0 0 15px;    }    37.5% {        text-shadow: #f1a247 0 0 15px;    }    50% {        text-shadow: #f1ee47 0 0 15px;    }    50% {        text-shadow: #b347f1 0 0 15px;    }    62.5% {        text-shadow: #002afa 0 0 15px;    }    75% {        text-shadow: #ed709b 0 0 15px;    }    87.5% {        text-shadow: #39c5bb 0 0 15px;    }    100% {        text-shadow: #5636ed 0 0 15px;    }}@keyframes light_10px {    0% {        text-shadow: #5636ed 0 0 10px;    }    12.5% {        text-shadow: #11ee5e 0 0 10px;    }    25% {        text-shadow: #f14747 0 0 10px;    }    37.5% {        text-shadow: #f1a247 0 0 10px;    }    50% {        text-shadow: #f1ee47 0 0 10px;    }    50% {        text-shadow: #b347f1 0 0 10px;    }    62.5% {        text-shadow: #002afa 0 0 10px;    }    75% {        text-shadow: #ed709b 0 0 10px;    }    87.5% {        text-shadow: #39c5bb 0 0 10px;    }    100% {        text-shadow: #5636ed 0 0 10px;    }}@keyframes light_5px {    0% {        text-shadow: #5636ed 0 0 5px;    }    12.5% {        text-shadow: #11ee5e 0 0 5px;    }    25% {        text-shadow: #f14747 0 0 5px;    }    37.5% {        text-shadow: #f1a247 0 0 15px;    }    50% {        text-shadow: #f1ee47 0 0 5px;    }    50% {        text-shadow: #b347f1 0 0 5px;    }    62.5% {        text-shadow: #002afa 0 0 5px;    }    75% {        text-shadow: #ed709b 0 0 5px;    }    87.5% {        text-shadow: #39c5bb 0 0 5px;    }    100% {        text-shadow: #5636ed 0 0 5px;    }}]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -140,10 +396,10 @@
     
     <entry>
       <title></title>
-      <link href="/js/cursor.js"/>
-      <url>/js/cursor.js</url>
+      <link href="/js/universe.js"/>
+      <url>/js/universe.js</url>
       
-        <content type="html"><![CDATA[var CURSOR;Math.lerp = (a, b, n) => (1 - n) * a + n * b;const getStyle = (el, attr) => {    try {        return window.getComputedStyle            ? window.getComputedStyle(el)[attr]            : el.currentStyle[attr];    } catch (e) { }    return "";};class Cursor {    constructor() {        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    move(left, top) {        this.cursor.style["left"] = `${left}px`;        this.cursor.style["top"] = `${top}px`;    }    create() {        if (!this.cursor) {            this.cursor = document.createElement("div");            this.cursor.id = "cursor";            this.cursor.classList.add("hidden");            document.body.append(this.cursor);        }        var el = document.getElementsByTagName('*');        for (let i = 0; i < el.length; i++)            if (getStyle(el[i], "cursor") == "pointer")                this.pt.push(el[i].outerHTML);        document.body.appendChild((this.scr = document.createElement("style")));        // 这里改变鼠标指针的颜色 由svg生成        this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='1.0' fill='rgb(57, 197, 187)'/></svg>") 4 4, auto}`;    }    refresh() {        this.scr.remove();        this.cursor.classList.remove("hover");        this.cursor.classList.remove("active");        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    init() {        document.onmouseover = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");        document.onmouseout = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");        document.onmousemove = e => { (this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = { x: e.clientX - 8, y: e.clientY - 8 }; this.cursor.classList.remove("hidden"); };        document.onmouseenter = e => this.cursor.classList.remove("hidden");        document.onmouseleave = e => this.cursor.classList.add("hidden");        document.onmousedown = e => this.cursor.classList.add("active");        document.onmouseup = e => this.cursor.classList.remove("active");    }    render() {        if (this.pos.prev) {            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);            this.move(this.pos.prev.x, this.pos.prev.y);        } else {            this.pos.prev = this.pos.curr;        }        requestAnimationFrame(() => this.render());    }}(() => {    CURSOR = new Cursor();    // 需要重新获取列表时，使用 CURSOR.refresh()})();]]></content>
+        <content type="html"><![CDATA[function dark() { window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var n, e, i, h, t = .05, s = document.getElementById("universe"), o = !0, a = "180,184,240", r = "226,225,142", d = "226,225,224", c = []; function f() { n = window.innerWidth, e = window.innerHeight, i = .216 * n, s.setAttribute("width", n), s.setAttribute("height", e) } function u() { h.clearRect(0, 0, n, e); for (var t = c.length, i = 0; i < t; i++) { var s = c[i]; s.move(), s.fadeIn(), s.fadeOut(), s.draw() } } function y() { this.reset = function () { this.giant = m(3), this.comet = !this.giant && !o && m(10), this.x = l(0, n - 10), this.y = l(0, e), this.r = l(1.1, 2.6), this.dx = l(t, 6 * t) + (this.comet + 1 - 1) * t * l(50, 120) + 2 * t, this.dy = -l(t, 6 * t) - (this.comet + 1 - 1) * t * l(50, 120), this.fadingOut = null, this.fadingIn = !0, this.opacity = 0, this.opacityTresh = l(.2, 1 - .4 * (this.comet + 1 - 1)), this.do = l(5e-4, .002) + .001 * (this.comet + 1 - 1) }, this.fadeIn = function () { this.fadingIn && (this.fadingIn = !(this.opacity > this.opacityTresh), this.opacity += this.do) }, this.fadeOut = function () { this.fadingOut && (this.fadingOut = !(this.opacity < 0), this.opacity -= this.do / 2, (this.x > n || this.y < 0) && (this.fadingOut = !1, this.reset())) }, this.draw = function () { if (h.beginPath(), this.giant) h.fillStyle = "rgba(" + a + "," + this.opacity + ")", h.arc(this.x, this.y, 2, 0, 2 * Math.PI, !1); else if (this.comet) { h.fillStyle = "rgba(" + d + "," + this.opacity + ")", h.arc(this.x, this.y, 1.5, 0, 2 * Math.PI, !1); for (var t = 0; t < 30; t++)h.fillStyle = "rgba(" + d + "," + (this.opacity - this.opacity / 20 * t) + ")", h.rect(this.x - this.dx / 4 * t, this.y - this.dy / 4 * t - 2, 2, 2), h.fill() } else h.fillStyle = "rgba(" + r + "," + this.opacity + ")", h.rect(this.x, this.y, this.r, this.r); h.closePath(), h.fill() }, this.move = function () { this.x += this.dx, this.y += this.dy, !1 === this.fadingOut && this.reset(), (this.x > n - n / 4 || this.y < 0) && (this.fadingOut = !0) }, setTimeout(function () { o = !1 }, 50) } function m(t) { return Math.floor(1e3 * Math.random()) + 1 < 10 * t } function l(t, i) { return Math.random() * (i - t) + t } f(), window.addEventListener("resize", f, !1), function () { h = s.getContext("2d"); for (var t = 0; t < i; t++)c[t] = new y, c[t].reset(); u() }(), function t() { document.getElementsByTagName('html')[0].getAttribute('data-theme') == 'dark' && u(), window.requestAnimationFrame(t) }() };dark()]]></content>
       
     </entry>
     
@@ -151,10 +407,10 @@
     
     <entry>
       <title></title>
-      <link href="/js/universe.js"/>
-      <url>/js/universe.js</url>
+      <link href="/js/cursor.js"/>
+      <url>/js/cursor.js</url>
       
-        <content type="html"><![CDATA[function dark() { window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var n, e, i, h, t = .05, s = document.getElementById("universe"), o = !0, a = "180,184,240", r = "226,225,142", d = "226,225,224", c = []; function f() { n = window.innerWidth, e = window.innerHeight, i = .216 * n, s.setAttribute("width", n), s.setAttribute("height", e) } function u() { h.clearRect(0, 0, n, e); for (var t = c.length, i = 0; i < t; i++) { var s = c[i]; s.move(), s.fadeIn(), s.fadeOut(), s.draw() } } function y() { this.reset = function () { this.giant = m(3), this.comet = !this.giant && !o && m(10), this.x = l(0, n - 10), this.y = l(0, e), this.r = l(1.1, 2.6), this.dx = l(t, 6 * t) + (this.comet + 1 - 1) * t * l(50, 120) + 2 * t, this.dy = -l(t, 6 * t) - (this.comet + 1 - 1) * t * l(50, 120), this.fadingOut = null, this.fadingIn = !0, this.opacity = 0, this.opacityTresh = l(.2, 1 - .4 * (this.comet + 1 - 1)), this.do = l(5e-4, .002) + .001 * (this.comet + 1 - 1) }, this.fadeIn = function () { this.fadingIn && (this.fadingIn = !(this.opacity > this.opacityTresh), this.opacity += this.do) }, this.fadeOut = function () { this.fadingOut && (this.fadingOut = !(this.opacity < 0), this.opacity -= this.do / 2, (this.x > n || this.y < 0) && (this.fadingOut = !1, this.reset())) }, this.draw = function () { if (h.beginPath(), this.giant) h.fillStyle = "rgba(" + a + "," + this.opacity + ")", h.arc(this.x, this.y, 2, 0, 2 * Math.PI, !1); else if (this.comet) { h.fillStyle = "rgba(" + d + "," + this.opacity + ")", h.arc(this.x, this.y, 1.5, 0, 2 * Math.PI, !1); for (var t = 0; t < 30; t++)h.fillStyle = "rgba(" + d + "," + (this.opacity - this.opacity / 20 * t) + ")", h.rect(this.x - this.dx / 4 * t, this.y - this.dy / 4 * t - 2, 2, 2), h.fill() } else h.fillStyle = "rgba(" + r + "," + this.opacity + ")", h.rect(this.x, this.y, this.r, this.r); h.closePath(), h.fill() }, this.move = function () { this.x += this.dx, this.y += this.dy, !1 === this.fadingOut && this.reset(), (this.x > n - n / 4 || this.y < 0) && (this.fadingOut = !0) }, setTimeout(function () { o = !1 }, 50) } function m(t) { return Math.floor(1e3 * Math.random()) + 1 < 10 * t } function l(t, i) { return Math.random() * (i - t) + t } f(), window.addEventListener("resize", f, !1), function () { h = s.getContext("2d"); for (var t = 0; t < i; t++)c[t] = new y, c[t].reset(); u() }(), function t() { document.getElementsByTagName('html')[0].getAttribute('data-theme') == 'dark' && u(), window.requestAnimationFrame(t) }() };dark()]]></content>
+        <content type="html"><![CDATA[var CURSOR;Math.lerp = (a, b, n) => (1 - n) * a + n * b;const getStyle = (el, attr) => {    try {        return window.getComputedStyle            ? window.getComputedStyle(el)[attr]            : el.currentStyle[attr];    } catch (e) { }    return "";};class Cursor {    constructor() {        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    move(left, top) {        this.cursor.style["left"] = `${left}px`;        this.cursor.style["top"] = `${top}px`;    }    create() {        if (!this.cursor) {            this.cursor = document.createElement("div");            this.cursor.id = "cursor";            this.cursor.classList.add("hidden");            document.body.append(this.cursor);        }        var el = document.getElementsByTagName('*');        for (let i = 0; i < el.length; i++)            if (getStyle(el[i], "cursor") == "pointer")                this.pt.push(el[i].outerHTML);        document.body.appendChild((this.scr = document.createElement("style")));        // 这里改变鼠标指针的颜色 由svg生成        this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='1.0' fill='rgb(57, 197, 187)'/></svg>") 4 4, auto}`;    }    refresh() {        this.scr.remove();        this.cursor.classList.remove("hover");        this.cursor.classList.remove("active");        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    init() {        document.onmouseover = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");        document.onmouseout = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");        document.onmousemove = e => { (this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = { x: e.clientX - 8, y: e.clientY - 8 }; this.cursor.classList.remove("hidden"); };        document.onmouseenter = e => this.cursor.classList.remove("hidden");        document.onmouseleave = e => this.cursor.classList.add("hidden");        document.onmousedown = e => this.cursor.classList.add("active");        document.onmouseup = e => this.cursor.classList.remove("active");    }    render() {        if (this.pos.prev) {            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);            this.move(this.pos.prev.x, this.pos.prev.y);        } else {            this.pos.prev = this.pos.curr;        }        requestAnimationFrame(() => this.render());    }}(() => {    CURSOR = new Cursor();    // 需要重新获取列表时，使用 CURSOR.refresh()})();]]></content>
       
     </entry>
     
