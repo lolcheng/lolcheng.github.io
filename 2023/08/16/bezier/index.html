@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>曲线插值与拟合算法 | 随风的神秘小屋</title><meta name="author" content="沈畅"><meta name="copyright" content="沈畅"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="有关于曲线插值与拟合算法方面的相关知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="曲线插值与拟合算法">
+<meta property="og:url" content="https://www.lolcheng.top/2023/08/16/bezier/index.html">
+<meta property="og:site_name" content="随风的神秘小屋">
+<meta property="og:description" content="有关于曲线插值与拟合算法方面的相关知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.lolcheng-picbed.top/img/bezier.png">
+<meta property="article:published_time" content="2023-08-16T03:24:00.000Z">
+<meta property="article:modified_time" content="2023-08-16T03:24:00.000Z">
+<meta property="article:author" content="沈畅">
+<meta property="article:tag" content="路径规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.lolcheng-picbed.top/img/bezier.png"><link rel="shortcut icon" href="https://www.lolcheng-picbed.top/img/favicon.png"><link rel="canonical" href="https://www.lolcheng.top/2023/08/16/bezier/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '曲线插值与拟合算法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-08-16 11:24:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.lolcheng-picbed.top/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">37</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 致来者</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.lolcheng-picbed.top/img/bezier.png')"><nav id="nav"><span id="blog-info"><a href="/" title="随风的神秘小屋"><span class="site-name">随风的神秘小屋</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 致来者</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">曲线插值与拟合算法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-16T03:24:00.000Z" title="发表于 2023-08-16 11:24:00">2023-08-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-16T03:24:00.000Z" title="更新于 2023-08-16 11:24:00">2023-08-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/">控制理论</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="曲线插值与拟合算法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>贝赛尔曲线相关知识：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/366678047">https://zhuanlan.zhihu.com/p/366678047</a></p>
+<p>B样条曲线相关知识：<a target="_blank" rel="noopener" href="https://www.guyuehome.com/37024">https://www.guyuehome.com/37024</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qz4y1m7dS">https://www.bilibili.com/video/BV1Qz4y1m7dS</a></p>
+<p>可知每个点的生成方式与t的关系。下图的显示的t是均匀流逝的。若把下图的黑点当作智能体在二维平面上运动，而最终的贝塞尔曲线（红色曲线）为智能体最终的行驶轨迹，我们可以看到智能体在不同的时间的速度是不相等。大致的感觉是：弯度越大时，行驶速度越慢；越平直，速度越快。<br>对比几组实验，发现贝塞尔曲线上第个点的速度是有差异的。但是，每个点的速度与曲线的弯度（曲率）没有直接关系，而是与控制点间距离有关。从第四组实验可以看到，四个控制点共线，曲率在每处都为零，但是速度先增大后减小，这与头两个点距离最短，中间两个点距离最大有直接关系。</p>
+<p>在实际速度规划中，我们期望在曲率（绝对值）大的地方，以较小的行驶速度行驶；在曲率（绝对值）小的地方，以较大的行驶速度行驶，从而在效率与安全之间达到一个很好平衡。贝塞尔曲线经常被用来设计或生成无人车的行驶轨迹，要得到期望速度，得先计算各点曲率，然后再通过设计好的函数，得到最终的期望速度。这样一个过程比较绕，贝塞尔曲线的t可以当作时间以固定比例的缩放（0到1之间）的值，很自然的想法是：各时间点的速度是否与实际无人车行驶的期望速度一致呢？经过本篇实现，很遗憾的结果是，贝塞尔曲线各点上的速度与曲率没有直接关系，所以不能直接用于速度规划。</p>
+<p>但是，我们也发现：贝塞尔曲率各点的速度与各控制点的分布（前后点的距离）有关。在设计无人车轨迹时，一般会能确定几个控制点的位置（例如起点与未端点），以及其它控制点的部分约束（例如：始未两控制点的姿态一般是确定的，这样第二个控制点与倒数第二个控制点一定分别是在始未控制方向的前与后。），因此，可以在有限维度上调整各控制点的距离来达到在中观层面控制贝塞尔曲线上各点的目的，从而直接使用。</p>
+<p>为什么要引入B样条曲线？<br>B样条是贝塞尔曲线的延申，贝塞尔曲线是B样条的基础， B样条可以看成很多组贝塞尔曲线的拼接。<br>贝塞尔曲线是在汽车的曲线设计种首次被提出的，汽车的外形设计十分复杂，控制点的表示方式能够简化其数学描述，将其数学化的表示出来。<br>还记得贝塞尔曲线的特质吗？主要的两个， 1 阶次是控制点个数减1， 2 牵一发动全身，移动一个控制点，整段曲线都会变化。<br>如果要用贝塞尔曲线来设计上图种的汽车造型， 那么汽车的设计简直是噩梦，形状复杂的曲线需要更多的控制点，曲线的阶次就会变得非常高。牵一发而动全身， 想改一下车屁股的造型， 移动一下控制点，结果车头的造型也被改变了。<br>为了克服贝塞尔曲线的以上两大缺点，B样条应运而生了。<br>因此B样条的两个性质就是贝塞尔的缺点反过来：1 可以指定阶次。2 移动控制点仅仅改变曲线的部分形状，而不死整体<br>B样条采用解决方案是贝塞尔曲线的拼接，也就是把一条曲线变为多段贝塞尔曲线的拼接。</p>
+<p>为了是B样条曲线具备上述形式，它需要有三大要素：节点，控制点，阶次。<br>其中节点可认为是分隔点，将区间[u0, um]细分为节点区间。所有B-样条基函数被假设定义域在[u0, um]上。在本文中，我们经常使用u0 = 0和um = 1，所以定义域是闭区间[0,1]。<br>控制点和贝塞尔的一样，就是空间上决定曲线形状的点，本文中用Pi表示。<br>k是阶次，与贝塞尔曲线不同，k阶B样条曲线的各段轨迹由k个控制点控制而非k-1个。</p>
+<p>B样条曲线数学定义，其中P(u)即为值u下的轨迹点值，u从0到1完成曲线绘制：</p>
+<p>Bi,k(u)作为B样条曲线的基函数，具有以下形式（可以类比贝赛尔曲线的伯恩斯坦多项式）：</p>
+<p>这是一个递推式，可以看到基函数是关于u的函数，其他值均为常数与可递推值。<br>其中u的地位与贝塞尔曲线的t类似，只是贝赛尔曲线中t取[0,1]的各段是均匀的，而B样条曲线中的u在[0,1]的不同段下还具有不同的函数形式，这些分隔用常数ui表示。<br>这些分段就是为了实现贝塞尔曲线的拼接，而这些分隔点也就是节点。<br>于是整个[0,1]段被分割成了以下形式：</p>
+<p>需要注意的是，有n+1个控制点和k阶，就需要n+k+1个分隔点。<br>感觉有点难以理解？没关系！我们先从B样条曲线的基函数Bi,k(u)的最特殊形式出发：<br>当阶次k=1时，此时的Bi,k(u)只在[ui,ui+1]处具有非零定义，即：</p>
+<p>而当k&gt;=2时，由于各ui均为常数，而Bi,k-1和Bi+1,k-1均为上阶值，可以被递推得到，于是所有的Bi,k(u)值便被分隔点ui和阶次k完全确定，而最后的轨迹点P(u)则是可以看做由控制点Pi、分隔点ui和阶次k共同确定，这也是我们最初提出B样条曲线需要满足的需求。</p>
+<p>接下来我们从更高的角度再审视B样条曲线：<br>以一个有四个控制点的四阶B样条曲线为例，则它需要8个分隔点u0-u7，此时P(u)=P0B0,4(u)+P1B1,4(u)+P2B2,4(u)+P3B3,4(u),u∈[0,1]（被8个分隔点分隔）<br>而B0,4(u)由递推关系可知它由B0,3(u)和B1,3(u)确定，而B0,3(u)又由B0,2(u)和B1,2(u)确定，B1,3(u)又由B2,2(u)和B1,2(u)确定，以此类推形成三角关系：即B0,4(u)完全由一阶基函数B0,1(u),B1,1(u),B2,1(u),B3,1(u)的线性组合构成，B1,4(u),B2,4(u),B3,4(u)也类似。即下图：</p>
+<p>于是我们可以发现，作为控制点的Pi只能控制Bi,k(u)在非零域下的值，这也变相说明了B样条曲线下控制点只具有局部的控制能力。例如B0,3(u)只在[u0,u3)段非零，而在其他段由于其所有的基函数均为0，故B0,3(u)本身也为0，即P0作为控制点只有能力控制[u0,u3)段的曲线，其他阶段由于乘积为0，P0没有控制能力。<br>更进一步我们发现，对于任意一段节点区间[ui,ui+1)，至多有k个Bi,k(u)值非零，亦即至多有k个控制点对该节点区间起控制作用，这也说明了一段节点区间内形成的曲线，应该是一段近似于k-1阶贝塞尔曲线所达到的效果。例如在3阶b样条曲线[u2,u3)内，仅有B0,3(u),B1,3(u),B2,3(u)非零，对应控制点P0,P1,P2对其起控制作用实现类似2阶贝塞尔曲线。由此我们也可以看出，B样条曲线是若干条部分贝塞尔曲线的组合。</p>
+<p>勘误：对于open B样条，u定义域为[uk-1,un+1]<br>什么是open B样条呢？<br>事实上我们发现，对于一段u∈[0,1]的b样条曲线而言，其形成的曲线是一段闭环曲线，且其有部分段是不符合我们定义b样条曲线的意图的。之前我们提到，对于任意一段节点区间[ui,ui+1)，至多有k个Bi,k(u)值非零，亦即至多有k个控制点对该节点区间起控制作用。那么什么叫至多呢？例如我们在3阶B样条曲线[u0,u1)段内时，此时仅有B0,3(u)非零，意味着在[u0,u1)段内仅有控制点P1发挥作用，而我们定义B样条曲线是为了发挥其分段贝塞尔的效果，因此，对于每一段节点区间，至少需要k个控制点，[u0,u1)段实际上是一段0阶贝塞尔，也就是从原点到P1的一条直线，这是错误定义的一段曲线，应当舍去。基于这个原理，我们可以发现当所有段均满足B样条曲线规定时，u的定义域仅为[uk-1,un+1]，这样的B样条曲线我们称之为open B样条曲线。可见，如果我们要画出一条open B样条曲线，还需要满足k-1&lt;n+1这一条件。</p>
+<p>由此绘制的B样条曲线我们发现，它仍不符合贝塞尔曲线的部分性质，例如曲线的端点并不经过头尾的控制点，且曲线的首端切线方向和末端切线方向并不分别与第一第二，倒数第一第二的控制点组成的直线方向相同。这会导致控制上出现很多不方便的地方。故进一步，我们引入准均匀B样条曲线（clamped B样条）的概念，当一个B样条曲线的起点和终点（一般也就是0和1）呈现k次的重复度时，得到的B样条曲线即称为准均匀B样条曲线。准均匀B样条曲线兼具有B样条曲线和贝塞尔曲线的功能，即曲线的端点经过头尾的控制点，且曲线的首端切线方向和末端切线方向分别与第一第二，倒数第一第二的控制点组成的直线方向相同的同时，还能进行分段控制。准均匀B样条曲线是很常用的规划曲线。</p>
+<p>B样条的导数：<br>先讲clamped B样条</p>
+<p>既然B样条是贝塞尔曲线的扩展，那么必然要继承贝塞尔曲线一些优良的性质。贝塞尔曲线的导数还是贝塞尔， B样条的导数还是B样条。</p>
+<p>接下来看推导公式：</p>
+<p>因此，可知，B样条的导数还是B样条， 依然保留B样条的优良特性。</p>
+<p>控制点减1，阶数减1，那么节点数目必然是减2. 对于clamped B样条，只要是去除第一个和最后一个节点就ok了，因此clamped B样条的求导还是clamped B样条，这个性质使其方便计算，应用广泛。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.lolcheng.top">沈畅</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.lolcheng.top/2023/08/16/bezier/">https://www.lolcheng.top/2023/08/16/bezier/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.lolcheng.top" target="_blank">随风的神秘小屋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/">路径规划</a></div><div class="post_share"><div class="social-share" data-image="https://www.lolcheng-picbed.top/img/bezier.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/08/19/omni/" title="底盘运动学解算"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.lolcheng-picbed.top/img/omni.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">底盘运动学解算</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/15/trajplan/" title="路径规划算法学习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.lolcheng-picbed.top/img/trajplan.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">路径规划算法学习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/08/15/trajplan/" title="路径规划算法学习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.lolcheng-picbed.top/img/trajplan.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-15</div><div class="title">路径规划算法学习</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.lolcheng-picbed.top/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">沈畅</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">37</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.lolcheng-picbed.top/img/qq.png" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #1169EE;"></i></a><a class="social-icon" href="https://www.lolcheng-picbed.top/img/wechat.png" target="_blank" title="Wechat"><i class="fa-brands fa-weixin" style="color: #1AE642;"></i></a><a class="social-icon" href="https://github.com/lolcheng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/406219866" target="_blank" title="BiliBili"><i class="fa-brands fa-bilibili" style="color: #11EEEE;"></i></a><a class="social-icon" href="mailto:1397799304@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">贵客来访,未曾远迎，失敬失敬！我是小屋的主人随风，想知道我的更多资料欢迎点击关于查看~</div></div><div class="sticky_layout"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By 沈畅</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://www.lolcheng.top/categories/人工智能/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🧠 人工智能 (5)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lolcheng.top/categories/嵌入式/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🔬 嵌入式 (7)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lolcheng.top/categories/控制理论/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🎮 控制理论 (12)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lolcheng.top/categories/机器人/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🤖 机器人 (8)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lolcheng.top/categories/编程语言学习/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💻 编程语言学习 (4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lolcheng.top/categories/编译进化/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🧬 编译进化 (6)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://www.lolcheng.top/categories/数据收集与处理/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🔢 数据收集与处理 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://www.lolcheng.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #69e8f2}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = '2695db4e50830126ecac269d88eab6e4';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v6.2.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.3.1" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" data-title="本站采用多线部署，主线路托管于Vercel" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/10/19/MachineLearning/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.lolcheng-picbed.top/img/MachineLearning.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-10-19</span><a class="blog-slider__title" href="2023/10/19/MachineLearning/" alt="">机器学习</a><div class="blog-slider__text">有关于人工智能机器学习方面的相关知识，文章部分内容引用自吴恩达老师</div><a class="blog-slider__button" href="2023/10/19/MachineLearning/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/10/14/DeepLearning/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.lolcheng-picbed.top/img/DeepLearning.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-10-14</span><a class="blog-slider__title" href="2023/10/14/DeepLearning/" alt="">深度学习</a><div class="blog-slider__text">有关于人工智能深度学习方面的相关知识，文章部分内容引用自吴恩达老师</div><a class="blog-slider__button" href="2023/10/14/DeepLearning/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '0.5s');
+    arr[i].setAttribute('data-wow-offset', '0');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '0.5s');
+    arr[i].setAttribute('data-wow-offset', '0');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
