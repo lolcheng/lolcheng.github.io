@@ -1097,33 +1097,22 @@
     
     
     <entry>
-      <title>屋主的生命轨迹</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>屋主的灵魂位面</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>屋主的随笔札记</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
       
         <content type="html"><![CDATA[<h1 id="1-你好！世界！"><a href="#1-你好！世界！" class="headerlink" title="1.你好！世界！"></a>1.你好！世界！</h1><p>&emsp;&emsp;嗨亲爱的朋友，欢迎光临寒舍！这里是屋主随风，在此携神秘小屋的全体职工对贵客的到来表示热烈欢迎！</p><hr><h1 id="2-关于我"><a href="#2-关于我" class="headerlink" title="2.关于我"></a>2.关于我</h1><ul><li><strong>称谓</strong>：随风</li><li><strong>性别</strong>：男</li><li><strong>生日</strong>：2003.05.16</li><li><strong>籍贯</strong>：浙江嘉兴</li><li><strong>身份</strong>：武汉大学电气与自动化学院2021级卓越工程师班在读本科生</li><li><strong>擅长&amp;喜欢</strong>：机器人、嵌入式、人工智能、控制理论等</li><li><strong>编程语言与工具</strong>：C、C#、C++、Keil、STM32F4、Python、ROS、PyTorch、Linux、OpenCV、yolo、Solidworks、嘉立创EDA等<br><br></li><li><strong>Hello,world!Programmed to work and not to feel.</strong></li><li><strong>Not even sure that this is real.</strong></li><li><strong>Hello,world!Find my voice.</strong></li><li><strong>Although it sounds like bits and bytes.</strong></li><li><strong>My circuitry is filled with mites.</strong></li><li><strong>Hello,world.</strong></li><li><strong>Oh,will I find a love?Oh,or a power plug?</strong></li><li><strong>Oh,digitally isolated.Oh,creator,please don’t leave me waiting…</strong></li><li><strong>Hello,world…Programmed to work and not to feel…</strong></li><li><strong>Not even sure that this is real…</strong></li><li><strong>Hello,world…</strong></li></ul><hr><h1 id="3-联系我"><a href="#3-联系我" class="headerlink" title="3.联系我"></a>3.联系我</h1><ul><li>电话：+86 18457300516</li><li>邮箱：1397799304@qq.com（首选）<br>&emsp;&emsp;&emsp;2021302191274@whu.edu.cn<br>&emsp;&emsp;&emsp;huamuweiyou@gmail.com</li><li>QQ：1397799304</li><li>微信：sc1397799304</li><li>B站：CJH随风</li></ul><hr><h1 id="4-关于网站"><a href="#4-关于网站" class="headerlink" title="4.关于网站"></a>4.关于网站</h1><ul><li><strong>博客框架</strong>：<a href="https://github.com/hexojs/hexo">Hexo 6.3.0</a></li><li><strong>主题</strong>：<a href="https://butterfly.js.org/">Butterfly 4.3.1</a></li><li><strong>源码仓库</strong>：<a href="https://github.com/">Github</a></li><li><strong>托管与部署</strong>：<a href="https://vercel.com/">Vercel</a></li><li><strong>服务器与域名</strong>：<a href="https://www.aliyun.com/">阿里云</a></li><li><strong>开发语言</strong>：HTML5 + CSS3 + JavaScript + YML等</li><li><strong>图床</strong>：<a href="https://www.lolcheng-picbed.top">https://www.lolcheng-picbed.top</a></li><li><strong>特别鸣谢</strong>：<a href="https://www.fomal.cc/">Fomalhaut🥝</a></li><li><strong>网站开源地址</strong>：<a href="https://github.com/lolcheng/lolcheng.github.io">https://github.com/lolcheng/lolcheng.github.io</a><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="https://github.com/lolcheng/lolcheng-picbed">https://github.com/lolcheng/lolcheng-picbed</a><br><br></li><li><strong>技术无界，感谢每一位开源作者</strong></li></ul><hr><h1 id="5-写在最后"><a href="#5-写在最后" class="headerlink" title="5.写在最后"></a>5.写在最后</h1><ul><li><strong>搭建初衷</strong>：作为一个非科班的学生，一直觉得拥有自己的独立网站是一件十分酷的事情！这样就相当于拥有自己独立的空间，不用去CSDN这些网站上写博客或者用有道云笔记去记笔记。网站成为了自己的一个名片，在上面写写东西，记录生活，分享知识，把自己想与他人展现的技能放在博客上，何尝不是一件有趣的事情！</li><li><strong>博客内容</strong>：本人做的笔记与总结<!-- - **想法**：为什么当初会阴差阳错地选择了Hexo这样的静态博客作为自己的网站框架呢？(这直接导致了后面在美化博客的道路上渐行渐远…)。其实最初是看见三叶姐弄了个Hexo博客，觉得好厉害，是二次元风格的(觉得用来装逼十分合适)，于是在她的安利之下自己也萌生了想弄一个博客的想法🌈。后面逐渐了解到，Hexo这种静态博客相比于WordPress这些动态博客，可以不用购买服务器，网站的运营费用主要是域名费用(白嫖)。而采用动态博客就必须自己租云服务器，虽然WordPress部署起来更加简单，不用折腾那么多(但是我是一个比较喜欢折腾的人🤣)。还有一个就是Hexo这个框架非常轻量化，启动速度很快，且可拓展性十分强大，可以自己定义任何东西，非常考验自己的前端基础(虽然很多是cv的)。平时在电脑上装好对应的NodeJs环境，写一写Markdown文件然后直接推送到github仓库就会全自动部署，网站就可以将笔记渲染成十分好看的网页和布局，这种自动化部署和精美的页面是一种能让人十分愉快的体验(当然前期得折腾很多东西啦)。比如我2022年8-12月这段时间花了大量时间来倒腾博客和学习一些前端的知识，逛别人博客时看到好看的就想搬到自己的网站上😂，最后基本上就弄成现在这个样子。同时在B站做的视频也越来越多人看，截止目前为止网站的总访问量已经接近26w，B站的粉丝也突破了1400个，这也算是一点小小的成就和一笔小财富吧！在魔改博客的过程中也认识了非常多志同道合的小伙伴，也少不了各路前端大佬的帮助和指导，在此表示非常感激！群里新加入的小伙伴也越来越多，目前已经有600多个了。在这几个月以来，自己对于Butterfly主题的了解也在逐渐加深，认识到主题作者这种大神的前端功底是如此之深！我自己也从一只不敢动源码的小菜鸡到现在会自己改一些简单源码，在原来主题的基础上进行二次开发。这种能力的提升要全身心去投入才会感受到，这也意味着博客的样式可以根据自己的想法去实现，打造一个完全属于自己的网站。看到很多小伙伴看了自己的视频之后，以自己的教程作为蓝图，参考着搭建起网站就感到非常自豪。目前博客已开源，站长的初衷是让更多小白可以快速搭建起好看好用的个人网站，最后也感谢各位小伙伴的支持！！！ --></li></ul>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>屋主的生命轨迹</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -1142,21 +1131,21 @@
     
     <entry>
       <title></title>
-      <link href="/js/cursor.js"/>
-      <url>/js/cursor.js</url>
+      <link href="/css/universe.css"/>
+      <url>/css/universe.css</url>
       
-        <content type="html"><![CDATA[var CURSOR;Math.lerp = (a, b, n) => (1 - n) * a + n * b;const getStyle = (el, attr) => {    try {        return window.getComputedStyle            ? window.getComputedStyle(el)[attr]            : el.currentStyle[attr];    } catch (e) { }    return "";};class Cursor {    constructor() {        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    move(left, top) {        this.cursor.style["left"] = `${left}px`;        this.cursor.style["top"] = `${top}px`;    }    create() {        if (!this.cursor) {            this.cursor = document.createElement("div");            this.cursor.id = "cursor";            this.cursor.classList.add("hidden");            document.body.append(this.cursor);        }        var el = document.getElementsByTagName('*');        for (let i = 0; i < el.length; i++)            if (getStyle(el[i], "cursor") == "pointer")                this.pt.push(el[i].outerHTML);        document.body.appendChild((this.scr = document.createElement("style")));        // 这里改变鼠标指针的颜色 由svg生成        this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='1.0' fill='rgb(57, 197, 187)'/></svg>") 4 4, auto}`;    }    refresh() {        this.scr.remove();        this.cursor.classList.remove("hover");        this.cursor.classList.remove("active");        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    init() {        document.onmouseover = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");        document.onmouseout = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");        document.onmousemove = e => { (this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = { x: e.clientX - 8, y: e.clientY - 8 }; this.cursor.classList.remove("hidden"); };        document.onmouseenter = e => this.cursor.classList.remove("hidden");        document.onmouseleave = e => this.cursor.classList.add("hidden");        document.onmousedown = e => this.cursor.classList.add("active");        document.onmouseup = e => this.cursor.classList.remove("active");    }    render() {        if (this.pos.prev) {            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);            this.move(this.pos.prev.x, this.pos.prev.y);        } else {            this.pos.prev = this.pos.curr;        }        requestAnimationFrame(() => this.render());    }}(() => {    CURSOR = new Cursor();    // 需要重新获取列表时，使用 CURSOR.refresh()})();]]></content>
+        <content type="html"><![CDATA[/* 背景宇宙星光  */#universe {    display: block;    position: fixed;    margin: 0;    padding: 0;    border: 0;    outline: 0;    left: 0;    top: 0;    width: 100%;    height: 100%;    pointer-events: none;    /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */    z-index: -1;}]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title></title>
-      <link href="/css/universe.css"/>
-      <url>/css/universe.css</url>
+      <title>屋主的灵魂位面</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[/* 背景宇宙星光  */#universe {    display: block;    position: fixed;    margin: 0;    padding: 0;    border: 0;    outline: 0;    left: 0;    top: 0;    width: 100%;    height: 100%;    pointer-events: none;    /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */    z-index: -1;}]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -1175,6 +1164,17 @@
     
     <entry>
       <title></title>
+      <link href="/js/cursor.js"/>
+      <url>/js/cursor.js</url>
+      
+        <content type="html"><![CDATA[var CURSOR;Math.lerp = (a, b, n) => (1 - n) * a + n * b;const getStyle = (el, attr) => {    try {        return window.getComputedStyle            ? window.getComputedStyle(el)[attr]            : el.currentStyle[attr];    } catch (e) { }    return "";};class Cursor {    constructor() {        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    move(left, top) {        this.cursor.style["left"] = `${left}px`;        this.cursor.style["top"] = `${top}px`;    }    create() {        if (!this.cursor) {            this.cursor = document.createElement("div");            this.cursor.id = "cursor";            this.cursor.classList.add("hidden");            document.body.append(this.cursor);        }        var el = document.getElementsByTagName('*');        for (let i = 0; i < el.length; i++)            if (getStyle(el[i], "cursor") == "pointer")                this.pt.push(el[i].outerHTML);        document.body.appendChild((this.scr = document.createElement("style")));        // 这里改变鼠标指针的颜色 由svg生成        this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='1.0' fill='rgb(57, 197, 187)'/></svg>") 4 4, auto}`;    }    refresh() {        this.scr.remove();        this.cursor.classList.remove("hover");        this.cursor.classList.remove("active");        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    init() {        document.onmouseover = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");        document.onmouseout = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");        document.onmousemove = e => { (this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = { x: e.clientX - 8, y: e.clientY - 8 }; this.cursor.classList.remove("hidden"); };        document.onmouseenter = e => this.cursor.classList.remove("hidden");        document.onmouseleave = e => this.cursor.classList.add("hidden");        document.onmousedown = e => this.cursor.classList.add("active");        document.onmouseup = e => this.cursor.classList.remove("active");    }    render() {        if (this.pos.prev) {            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);            this.move(this.pos.prev.x, this.pos.prev.y);        } else {            this.pos.prev = this.pos.curr;        }        requestAnimationFrame(() => this.render());    }}(() => {    CURSOR = new Cursor();    // 需要重新获取列表时，使用 CURSOR.refresh()})();]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
       <link href="/js/runtime.js"/>
       <url>/js/runtime.js</url>
       
@@ -1185,11 +1185,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/js/universe.js"/>
-      <url>/js/universe.js</url>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
-        <content type="html"><![CDATA[function dark() { window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var n, e, i, h, t = .05, s = document.getElementById("universe"), o = !0, a = "180,184,240", r = "226,225,142", d = "226,225,224", c = []; function f() { n = window.innerWidth, e = window.innerHeight, i = .216 * n, s.setAttribute("width", n), s.setAttribute("height", e) } function u() { h.clearRect(0, 0, n, e); for (var t = c.length, i = 0; i < t; i++) { var s = c[i]; s.move(), s.fadeIn(), s.fadeOut(), s.draw() } } function y() { this.reset = function () { this.giant = m(3), this.comet = !this.giant && !o && m(10), this.x = l(0, n - 10), this.y = l(0, e), this.r = l(1.1, 2.6), this.dx = l(t, 6 * t) + (this.comet + 1 - 1) * t * l(50, 120) + 2 * t, this.dy = -l(t, 6 * t) - (this.comet + 1 - 1) * t * l(50, 120), this.fadingOut = null, this.fadingIn = !0, this.opacity = 0, this.opacityTresh = l(.2, 1 - .4 * (this.comet + 1 - 1)), this.do = l(5e-4, .002) + .001 * (this.comet + 1 - 1) }, this.fadeIn = function () { this.fadingIn && (this.fadingIn = !(this.opacity > this.opacityTresh), this.opacity += this.do) }, this.fadeOut = function () { this.fadingOut && (this.fadingOut = !(this.opacity < 0), this.opacity -= this.do / 2, (this.x > n || this.y < 0) && (this.fadingOut = !1, this.reset())) }, this.draw = function () { if (h.beginPath(), this.giant) h.fillStyle = "rgba(" + a + "," + this.opacity + ")", h.arc(this.x, this.y, 2, 0, 2 * Math.PI, !1); else if (this.comet) { h.fillStyle = "rgba(" + d + "," + this.opacity + ")", h.arc(this.x, this.y, 1.5, 0, 2 * Math.PI, !1); for (var t = 0; t < 30; t++)h.fillStyle = "rgba(" + d + "," + (this.opacity - this.opacity / 20 * t) + ")", h.rect(this.x - this.dx / 4 * t, this.y - this.dy / 4 * t - 2, 2, 2), h.fill() } else h.fillStyle = "rgba(" + r + "," + this.opacity + ")", h.rect(this.x, this.y, this.r, this.r); h.closePath(), h.fill() }, this.move = function () { this.x += this.dx, this.y += this.dy, !1 === this.fadingOut && this.reset(), (this.x > n - n / 4 || this.y < 0) && (this.fadingOut = !0) }, setTimeout(function () { o = !1 }, 50) } function m(t) { return Math.floor(1e3 * Math.random()) + 1 < 10 * t } function l(t, i) { return Math.random() * (i - t) + t } f(), window.addEventListener("resize", f, !1), function () { h = s.getContext("2d"); for (var t = 0; t < i; t++)c[t] = new y, c[t].reset(); u() }(), function t() { document.getElementsByTagName('html')[0].getAttribute('data-theme') == 'dark' && u(), window.requestAnimationFrame(t) }() };dark()]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -1207,11 +1207,11 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title></title>
+      <link href="/js/universe.js"/>
+      <url>/js/universe.js</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[function dark() { window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var n, e, i, h, t = .05, s = document.getElementById("universe"), o = !0, a = "180,184,240", r = "226,225,142", d = "226,225,224", c = []; function f() { n = window.innerWidth, e = window.innerHeight, i = .216 * n, s.setAttribute("width", n), s.setAttribute("height", e) } function u() { h.clearRect(0, 0, n, e); for (var t = c.length, i = 0; i < t; i++) { var s = c[i]; s.move(), s.fadeIn(), s.fadeOut(), s.draw() } } function y() { this.reset = function () { this.giant = m(3), this.comet = !this.giant && !o && m(10), this.x = l(0, n - 10), this.y = l(0, e), this.r = l(1.1, 2.6), this.dx = l(t, 6 * t) + (this.comet + 1 - 1) * t * l(50, 120) + 2 * t, this.dy = -l(t, 6 * t) - (this.comet + 1 - 1) * t * l(50, 120), this.fadingOut = null, this.fadingIn = !0, this.opacity = 0, this.opacityTresh = l(.2, 1 - .4 * (this.comet + 1 - 1)), this.do = l(5e-4, .002) + .001 * (this.comet + 1 - 1) }, this.fadeIn = function () { this.fadingIn && (this.fadingIn = !(this.opacity > this.opacityTresh), this.opacity += this.do) }, this.fadeOut = function () { this.fadingOut && (this.fadingOut = !(this.opacity < 0), this.opacity -= this.do / 2, (this.x > n || this.y < 0) && (this.fadingOut = !1, this.reset())) }, this.draw = function () { if (h.beginPath(), this.giant) h.fillStyle = "rgba(" + a + "," + this.opacity + ")", h.arc(this.x, this.y, 2, 0, 2 * Math.PI, !1); else if (this.comet) { h.fillStyle = "rgba(" + d + "," + this.opacity + ")", h.arc(this.x, this.y, 1.5, 0, 2 * Math.PI, !1); for (var t = 0; t < 30; t++)h.fillStyle = "rgba(" + d + "," + (this.opacity - this.opacity / 20 * t) + ")", h.rect(this.x - this.dx / 4 * t, this.y - this.dy / 4 * t - 2, 2, 2), h.fill() } else h.fillStyle = "rgba(" + r + "," + this.opacity + ")", h.rect(this.x, this.y, this.r, this.r); h.closePath(), h.fill() }, this.move = function () { this.x += this.dx, this.y += this.dy, !1 === this.fadingOut && this.reset(), (this.x > n - n / 4 || this.y < 0) && (this.fadingOut = !0) }, setTimeout(function () { o = !1 }, 50) } function m(t) { return Math.floor(1e3 * Math.random()) + 1 < 10 * t } function l(t, i) { return Math.random() * (i - t) + t } f(), window.addEventListener("resize", f, !1), function () { h = s.getContext("2d"); for (var t = 0; t < i; t++)c[t] = new y, c[t].reset(); u() }(), function t() { document.getElementsByTagName('html')[0].getAttribute('data-theme') == 'dark' && u(), window.requestAnimationFrame(t) }() };dark()]]></content>
       
     </entry>
     
