@@ -104,7 +104,14 @@ function showWelcome() {
                     }
                     break;
                 case "浙江省":
-                    posdesc = "东风渐绿西湖柳，雁已还人未南归。";
+                    switch (ipLoacation.result.ad_info.city) {
+                        case "嘉兴市":
+                            posdesc = "儿童相见不相识,笑问客从何处来。";
+                            break;
+                        default:
+                            posdesc = "东风渐绿西湖柳，雁已还人未南归。";
+                            break;
+                    }
                     break;
                 case "河南省":
                     switch (ipLoacation.result.ad_info.city) {
@@ -215,7 +222,7 @@ function showWelcome() {
     try {
         //自定义文本和需要放的位置
         document.getElementById("welcome-info").innerHTML =
-            `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离站长约 <span style="color:var(--theme-color)">${dist}</span> 公里，当前的IP地址为： <span style="color:var(--theme-color)">${ip}</span>， ${posdesc}</b>`;
+            `欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离屋主约 <span style="color:var(--theme-color)">${dist}</span> 公里，当前的IP地址为： <span style="color:var(--theme-color)">${ip}</span>， ${posdesc}</b>`;
     } catch (err) {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }
